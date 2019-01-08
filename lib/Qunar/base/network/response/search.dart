@@ -57,7 +57,7 @@ class Suggest {
 
   final int count;
 
-  final List<Suggest> extraList;
+  final List<Suggest> extra;
 
   Suggest(
     this.name,
@@ -77,7 +77,7 @@ class Suggest {
     this.destCityName,
     this.order,
     this.count,
-    this.extraList,
+    this.extra,
   );
 
   factory Suggest.fromJson(Map<String, dynamic> json) => _$SuggestFromJson(json);

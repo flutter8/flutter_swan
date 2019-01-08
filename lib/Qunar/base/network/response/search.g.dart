@@ -44,7 +44,7 @@ Suggest _$SuggestFromJson(Map<String, dynamic> json) {
       json['destCityName'] as String,
       json['order'] as bool,
       json['count'] as int,
-      (json['extraList'] as List)
+      (json['extra'] as List)
           ?.map((e) =>
               e == null ? null : Suggest.fromJson(e as Map<String, dynamic>))
           ?.toList());
@@ -68,5 +68,5 @@ Map<String, dynamic> _$SuggestToJson(Suggest instance) => <String, dynamic>{
       'destCityName': instance.destCityName,
       'order': instance.order,
       'count': instance.count,
-      'extraList': instance.extraList
+      'extra': instance.extra
     };
