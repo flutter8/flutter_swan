@@ -3,7 +3,7 @@ mixin QApiBook {}
 mixin QAPI_Search {
   static const String PATH = "proxy/search";
 
-  static const String recommendProduct = "$PATH/recommendProduct";
+  static const String recommendProduct = "global/search/recommendProduct";
 
   static const String hotQuery = "$PATH/hotQuery";
 }

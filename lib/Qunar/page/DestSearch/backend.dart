@@ -12,4 +12,20 @@ class Backend {
       return response;
     }).map((response) => SuggestList.fromJson(response.data["data"]));
   }
+
+  static Observable requestApiRecommendProduct(params, {stringify = true}) {
+    return Observable.just(params).asyncMap((param) async {
+      NetRequestCommander commander = NetRequestCommander.request(null);
+      Response response = await commander.post("api/${QAPI_Search.recommendProduct}", params, stringify: stringify);
+      return response;
+    }).map((response) => SearchRecommendProductList.fromJson(response.data["data"]));
+  }
+
+  static Observable requestApiSearchHotQuery(params, {stringify = true}) {
+    return Observable.just(params).asyncMap((param) async {
+      NetRequestCommander commander = NetRequestCommander.request(null);
+      Response response = await commander.post("api/${QAPI_Search.hotQuery}", params, stringify: stringify);
+      return response;
+    }).map((response) => SearchRecommendHotList.fromJson(response.data["data"]));
+  }
 }

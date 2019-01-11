@@ -84,3 +84,77 @@ class Suggest {
 
   Map<String, dynamic> toJson() => _$SuggestToJson(this);
 }
+
+@JsonSerializable()
+class SearchRecommendProductList extends BaseListResponse<SearchRecommendProduct> {
+  SearchRecommendProductList(
+    int totalCount,
+    List<SearchRecommendProduct> list,
+  ) : super(totalCount, list);
+
+  factory SearchRecommendProductList.fromJson(Map<String, dynamic> json) => _$SearchRecommendProductListFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SearchRecommendProductListToJson(this);
+}
+
+@JsonSerializable()
+class SearchRecommendProduct {
+  final String type;
+
+  final String name;
+
+  final String price;
+
+  final String url;
+
+  final int urlType;
+
+  const SearchRecommendProduct(
+    this.type,
+    this.name,
+    this.price,
+    this.url,
+    this.urlType,
+  );
+
+  factory SearchRecommendProduct.fromJson(Map<String, dynamic> json) => _$SearchRecommendProductFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SearchRecommendProductToJson(this);
+}
+
+@JsonSerializable()
+class SearchRecommendHotList extends BaseListResponse<SearchRecommendHot> {
+  SearchRecommendHotList(
+    int totalCount,
+    List<SearchRecommendHot> list,
+  ) : super(totalCount, list);
+
+  factory SearchRecommendHotList.fromJson(Map<String, dynamic> json) => _$SearchRecommendHotListFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SearchRecommendHotListToJson(this);
+}
+
+@JsonSerializable()
+class SearchRecommendHot {
+  final int id;
+
+  final String name;
+
+  final int type;
+
+  final int poiType;
+
+  final dynamic tag;
+
+  const SearchRecommendHot(
+    this.id,
+    this.name,
+    this.type,
+    this.poiType,
+    this.tag,
+  );
+
+  factory SearchRecommendHot.fromJson(Map<String, dynamic> json) => _$SearchRecommendHotFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SearchRecommendHotToJson(this);
+}

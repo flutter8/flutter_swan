@@ -29,11 +29,13 @@ class QTextStyle {
 
   const QTextStyle.grey() : this(Colors.grey);
 
-  const QTextStyle.black() : this(Colors.black);
+  const QTextStyle.black() : this(const Color(0xFF333333));
 
-  const QTextStyle.blue() : this(Colors.blue);
+  const QTextStyle.blue() : this(const Color(0xFF33CCCC));
 
   const QTextStyle.blueGrey() : this(Colors.blueGrey);
+
+  const QTextStyle.price(): this(const Color(0xFFFF643F));
 
   TextStyle get tiny => TextStyle(fontSize: QTextFont.kFontSizeTiny, color: color);
 
