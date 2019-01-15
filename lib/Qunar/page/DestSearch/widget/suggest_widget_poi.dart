@@ -29,6 +29,8 @@ class SuggestPoiWidget extends ASuggestWidget {
                   padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                   child: Text(
                     suggest.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: suggestTitleStyle(const BaseTextStyle.black()),
                   ),
                 ),

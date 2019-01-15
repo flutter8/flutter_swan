@@ -4,8 +4,8 @@ import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
 
-class SuggestMoreWidget extends ASuggestWidget {
-  SuggestMoreWidget(Suggest suggest) : super(suggest);
+class SuggestFlightWidget extends ASuggestWidget {
+  SuggestFlightWidget(Suggest suggest) : super(suggest);
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +26,10 @@ class SuggestMoreWidget extends ASuggestWidget {
                 suggest.name,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: suggestTitleStyle(const BaseTextStyle.grey()),
+                style: suggestTitleStyle(const BaseTextStyle.black()),
               ),
             ),
           ),
-          buildSuggestRightArrow(suggest.type, suggest.subType)
         ],
       ),
     );

@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swan/base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
 
-class SuggestLabelWidget extends ASuggestWidget {
-  SuggestLabelWidget(Suggest suggest) : super(suggest);
+class SuggestNoDataWidget extends ASuggestWidget {
+  SuggestNoDataWidget(Suggest suggest) : super(suggest);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+      height: 96,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: BaseDimens.BIG),
       child: Text(
-        suggest.name,
+        "木有您要找的地点",
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: suggestTitleStyle(const BaseTextStyle.grey()),

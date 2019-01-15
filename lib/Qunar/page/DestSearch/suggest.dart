@@ -7,13 +7,17 @@ import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_divider
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_dujia.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_experience.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_feedback.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_flight.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_label.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_landmark.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_link.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_more.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_no_data.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_note.dart';
-import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_poi.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_poi_around.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_poi_create.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_poi_tag.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_poi.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_smart.dart';
 
 class DestSearchSuggestWidget extends StatelessWidget {
@@ -67,8 +71,22 @@ class DestSearchSuggestWidget extends StatelessWidget {
         return SuggestNoteWidget(suggest);
       case DestSuggestType.SUGGEST_SMART:
         return SuggestSmartWidget(suggest);
+      case DestSuggestType.SUGGEST_FLIGHT_TICKET:
+      case DestSuggestType.SUGGEST_FLIGHT_SELLS:
+        return SuggestFlightWidget(suggest);
       case DestSuggestType.SUGGEST_HOTEL_LIST:
         return SuggestPoiTagWidget(suggest);
+      case DestSuggestType.SUGGEST_HOTEL_BRAND:
+        return SuggestPoiTagWidget(suggest);
+      case DestSuggestType.SUGGEST_POI_NEAR_SCENIC:
+      case DestSuggestType.SUGGEST_POI_NEAR_HOTEL:
+      case DestSuggestType.SUGGEST_POI_NEAR_FOOD:
+      case DestSuggestType.SUGGEST_POI_NEAR_ENT:
+      case DestSuggestType.SUGGEST_POI_NEAR_SHOPPING:
+      case DestSuggestType.SUGGEST_POI_NEAR_TRANSPORT:
+        return SuggestPoiAroundWidget(suggest);
+      case DestSuggestType.SUGGEST_POI_CREATE:
+        return SuggestPoiCreateWidget(suggest);
       case DestSuggestType.SUGGEST_FEEDBACK:
         return SuggestFeedbackWidget(suggest);
       case DestSuggestType.SUGGEST_CALL_CENTER:
@@ -78,6 +96,8 @@ class DestSearchSuggestWidget extends StatelessWidget {
       case DestSuggestType.SUGGEST_POI_LIST_ENT:
       case DestSuggestType.SUGGEST_POI_LIST_SHOPPING:
         return SuggestPoiTagWidget(suggest);
+      case DestSuggestType.SUGGEST_NO_DATA:
+        return SuggestNoDataWidget(suggest);
       case DestSuggestType.SUGGEST_EXPERIENCE:
         return SuggestExperienceWidget(suggest);
       case DestSuggestType.SUGGEST_DUJIA_PRODUCT:
@@ -86,7 +106,7 @@ class DestSearchSuggestWidget extends StatelessWidget {
         return SuggestLinkWidget(suggest);
       default:
         return ListTile(
-          title: Text(suggest?.name ?? "nnnull"),
+          title: Text((suggest?.name ?? "") + (suggest?.type ?? 0).toString()),
         );
     }
   }
