@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_swan/Qunar/base/styles/q_text_styles.dart';
+import 'package:flutter_swan/base/styles/text.dart';
 
 class QBaseGoBackWidget extends StatelessWidget {
   @override
@@ -10,8 +10,8 @@ class QBaseGoBackWidget extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: Icon(
         IconData(0xe39f, fontFamily: "Qunar"),
-        size: QTextFont.kFontSizeColossal,
-        color: QTextStyle.black().color,
+        size: BaseTextFontSize.COLOSSAL,
+        color: const BaseTextStyle.black().color,
       ),
       onPressed: () {},
     );

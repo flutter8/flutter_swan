@@ -22,6 +22,21 @@ class QDestSearchWidgetState extends State<QDestSearchWidget> {
 
   QDestSearchWidgetState() {
     controller = TextEditingController();
+    controller.addListener(() {
+      print(controller.text);
+      bloc.requestSuggestDest.add({
+        "query": controller.text,
+        "cityId": "299914",
+        "cityName": "北京",
+        "locateName": "北京",
+        "type": 0,
+        "vid": 80005900,
+        "maxType": 39,
+        "lcid": "299914",
+        "latlng": null,
+      });
+    });
+
     bloc = SearchBloc();
 
     Observable.timer(2, Duration(seconds: 2)).listen((data) {
@@ -49,8 +64,6 @@ class QDestSearchWidgetState extends State<QDestSearchWidget> {
   //   print(data);
   // });
 
-  
-
   // return super.createElement();
   // }
 
@@ -61,14 +74,17 @@ class QDestSearchWidgetState extends State<QDestSearchWidget> {
       body: Container(
         color: Colors.white,
         child: StreamBuilder(
-          stream: bloc.hotList,
+          stream: bloc.suggestList,
           builder: (BuildContext contex, AsyncSnapshot snapshot) {
             final data = snapshot.data;
+            print(data);
             return IndexedStack(
               index: 0,
               children: <Widget>[
-                DestSearchRecommendWidget(data),
-                DestSearchSuggestWidget(),
+                // DestSearchRecommendWidget(data),
+                DestSearchSuggestWidget(
+                  suggestList: data,
+                ),
               ],
             );
           },

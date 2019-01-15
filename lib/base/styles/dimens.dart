@@ -1,4 +1,4 @@
-class QGap {
+class BaseDimens {
 
   static const double TINY = 2;
 

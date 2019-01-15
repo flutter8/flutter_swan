@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
-import 'package:flutter_swan/Qunar/base/styles/q_gap.dart';
-import 'package:flutter_swan/Qunar/base/styles/q_text_styles.dart';
+import 'package:flutter_swan/base/styles/dimens.dart';
+import 'package:flutter_swan/base/styles/text.dart';
 
 class DestSearchRecommendWidget extends StatelessWidget {
   final SearchRecommendHotList recommendHotList;
@@ -26,20 +26,20 @@ class DestSearchRecommendWidget extends StatelessWidget {
 
   Widget buildStorageRecordWidget() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: QGap.BIG, vertical: QGap.NORMAL),
+      padding: const EdgeInsets.symmetric(horizontal: BaseDimens.BIG, vertical: BaseDimens.NORMAL),
       child: Row(
         children: <Widget>[
           Icon(
             IconData(0xe561, fontFamily: "Qunar"),
-            size: QTextFont.kFontSizeColossal,
-            color: QTextStyle.blue().color,
+            size: BaseTextFontSize.COLOSSAL,
+            color: const BaseTextStyle.blue().color,
           ),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: QGap.NORMAL),
+              padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
               child: Text(
                 "历史记录",
-                style: const QTextStyle.black().big,
+                style: const BaseTextStyle.black().big,
               ),
             ),
           ),
@@ -48,7 +48,7 @@ class DestSearchRecommendWidget extends StatelessWidget {
             padding: EdgeInsets.zero,
             child: Text(
               "清空",
-              style: QTextStyle.grey().big,
+              style: const BaseTextStyle.grey().big,
             ),
             onPressed: () {},
           )
@@ -60,43 +60,43 @@ class DestSearchRecommendWidget extends StatelessWidget {
   Widget buildRecommendProductWidget() {
     List<Widget> children = List.from(recommendProductList?.list?.map((product) {
           return Container(
-            padding: const EdgeInsets.symmetric(vertical: QGap.NORMAL),
+            padding: const EdgeInsets.symmetric(vertical: BaseDimens.NORMAL),
             child: Row(
               children: <Widget>[
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: QGap.SMALL, vertical: QGap.TINY),
+                  padding: const EdgeInsets.symmetric(horizontal: BaseDimens.SMALL, vertical: BaseDimens.TINY),
                   decoration: BoxDecoration(
                     color: Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.all(Radius.circular(4)),
                   ),
                   child: Text(
                     product.type,
-                    style: const QTextStyle.grey().small,
+                    style: const BaseTextStyle.grey().small,
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: QGap.NORMAL),
+                    padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                     child: Text(
                       product.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const QTextStyle.black().normal,
+                      style: const BaseTextStyle.black().normal,
                     ),
                   ),
                 ),
                 RichText(
                   text: TextSpan(
                     text: "￥",
-                    style: const QTextStyle.price().tiny,
+                    style: const BaseTextStyle.price().tiny,
                     children: [
                       TextSpan(
                         text: product.price,
-                        style: const QTextStyle.price().normal,
+                        style: const BaseTextStyle.price().normal,
                       ),
                       TextSpan(
                         text: "起",
-                        style: const QTextStyle.grey().tiny,
+                        style: const BaseTextStyle.grey().tiny,
                       ),
                     ],
                   ),
@@ -110,20 +110,20 @@ class DestSearchRecommendWidget extends StatelessWidget {
     children.insert(
       0,
       Container(
-        padding: const EdgeInsets.only(bottom: QGap.NORMAL),
+        padding: const EdgeInsets.only(bottom: BaseDimens.NORMAL),
         child: Row(
           children: <Widget>[
             Icon(
               IconData(0xf44c, fontFamily: "Qunar"),
-              size: QTextFont.kFontSizeColossal,
-              color: QTextStyle.blue().color,
+              size: BaseTextFontSize.COLOSSAL,
+              color: const BaseTextStyle.blue().color,
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: QGap.NORMAL),
+                padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                 child: Text(
                   "发现好货",
-                  style: const QTextStyle.black().big,
+                  style: const BaseTextStyle.black().big,
                 ),
               ),
             ),
@@ -133,7 +133,7 @@ class DestSearchRecommendWidget extends StatelessWidget {
     );
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: QGap.BIG, vertical: QGap.NORMAL),
+      padding: const EdgeInsets.symmetric(horizontal: BaseDimens.BIG, vertical: BaseDimens.NORMAL),
       child: Column(
         children: children,
       ),
@@ -142,24 +142,24 @@ class DestSearchRecommendWidget extends StatelessWidget {
 
   Widget buildRecommendQueryWidget() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: QGap.BIG, vertical: QGap.NORMAL),
+      padding: const EdgeInsets.symmetric(horizontal: BaseDimens.BIG, vertical: BaseDimens.NORMAL),
       child: Column(
         children: <Widget>[
           Container(
-            padding: const EdgeInsets.only(bottom: QGap.NORMAL),
+            padding: const EdgeInsets.only(bottom: BaseDimens.NORMAL),
             child: Row(
               children: <Widget>[
                 Icon(
                   IconData(0xe03b, fontFamily: "Qunar"),
-                  size: QTextFont.kFontSizeColossal,
-                  color: QTextStyle.blue().color,
+                  size: BaseTextFontSize.COLOSSAL,
+                  color: const BaseTextStyle.blue().color,
                 ),
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: QGap.NORMAL),
+                    padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                     child: Text(
                       "热门搜索",
-                      style: QTextStyle.black().big,
+                      style: const BaseTextStyle.black().big,
                     ),
                   ),
                 ),
@@ -173,7 +173,7 @@ class DestSearchRecommendWidget extends StatelessWidget {
               return Chip(
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 padding: EdgeInsets.zero,
-                labelPadding: const EdgeInsets.symmetric(horizontal: QGap.BIG),
+                labelPadding: const EdgeInsets.symmetric(horizontal: BaseDimens.BIG),
                 backgroundColor: Color(0xFFFAFAFA),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(

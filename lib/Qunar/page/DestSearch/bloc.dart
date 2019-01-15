@@ -3,25 +3,38 @@ import 'package:flutter_swan/Qunar/page/DestSearch/backend.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SearchBloc {
+  final Sink<Map> requestSuggestDest;
+
   final Sink<Map> requestRecommendHot;
+
+  final Observable suggestList;
 
   final Observable hotList;
 
   factory SearchBloc() {
+    final requestSuggestDest = PublishSubject<Map>();
     final requestRecommendHot = PublishSubject<Map>();
 
     return SearchBloc._(
+      requestSuggestDest,
       requestRecommendHot,
       requestRecommendHot.flatMap((Map param) => request(param)),
+      requestSuggestDest
+          .distinct()
+          .debounce(const Duration(milliseconds: 250))
+          .flatMap((Map param) => Backend.requestApiSuggestDest(param)),
     );
   }
 
   SearchBloc._(
+    this.requestSuggestDest,
     this.requestRecommendHot,
     this.hotList,
+    this.suggestList,
   );
 
   void dispose() {
+    requestSuggestDest?.close();
     requestRecommendHot?.close();
   }
 
