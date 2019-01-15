@@ -171,7 +171,7 @@ class DestSearchSuggestWidget extends StatelessWidget {
     return Divider(
       height: 0,
       indent: indent ?? 0,
-      color: Color(0xFFEEEEEE),
+      color: Colors.grey[300]
     );
   }
 }

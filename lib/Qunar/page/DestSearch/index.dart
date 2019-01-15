@@ -1,26 +1,19 @@
 import "package:flutter/material.dart";
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
-import 'package:flutter_swan/Qunar/page/DestSearch/backend.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/bloc.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/navigation.dart';
-import 'package:flutter_swan/Qunar/page/DestSearch/recommend.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/suggest.dart';
 import 'package:rxdart/rxdart.dart';
 
-class QDestSearchWidget extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => QDestSearchWidgetState();
-}
-
-class QDestSearchWidgetState extends State<QDestSearchWidget> {
+class QDestSearchWidget extends StatelessWidget {
   TextEditingController controller;
 
   SearchRecommendHotList recommendHotList;
 
   SearchBloc bloc;
 
-  QDestSearchWidgetState() {
+  QDestSearchWidget({Key key}) : super(key: key) {
     controller = TextEditingController();
     controller.addListener(() {
       print(controller.text);
@@ -45,27 +38,6 @@ class QDestSearchWidgetState extends State<QDestSearchWidget> {
       });
     });
   }
-
-  // @override
-  // StatelessElement createElement() {
-  // Observable.timer(0, Duration(seconds: 1)).flatMap((_) {
-  //   return Backend.requestApiSuggestDest({
-  //     "query": "北京",
-  //     "cityId": "299914",
-  //     "cityName": "北京",
-  //     "locateName": "北京",
-  //     "type": 0,
-  //     "vid": 80005900,
-  //     "maxType": 39,
-  //     "lcid": "299914",
-  //     "latlng": null,
-  //   });
-  // }).listen((data) {
-  //   print(data);
-  // });
-
-  // return super.createElement();
-  // }
 
   @override
   Widget build(BuildContext context) {
