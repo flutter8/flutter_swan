@@ -24,7 +24,7 @@ class SuggestMoreWidget extends ASuggestWidget {
               padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
               child: Text(
                 suggest.name,
-                style: const BaseTextStyle.grey().big,
+                style: suggestTitleStyle(const BaseTextStyle.grey()),
               ),
             ),
           ),

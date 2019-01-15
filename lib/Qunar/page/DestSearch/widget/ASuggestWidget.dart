@@ -9,6 +9,14 @@ abstract class ASuggestWidget extends StatelessWidget {
 
   const ASuggestWidget(this.suggest);
 
+  TextStyle suggestTitleStyle(BaseTextStyle src) {
+    return src.superBig;
+  }
+
+  TextStyle suggestSubTitleStyle(BaseTextStyle src) {
+    return src.normal;
+  }
+
   TextSpan buildSuggestHighlightText(String text, {String src = "北小卡"}) {
     TextSpan textSpan = TextSpan(children: []);
     text.splitMapJoin(

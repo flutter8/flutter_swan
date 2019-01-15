@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swan/base/styles/colors.dart';
 import 'package:flutter_swan/base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
@@ -28,7 +29,7 @@ class SuggestNoteWidget extends ASuggestWidget {
                   padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                   child: Text(
                     suggest.name,
-                    style: const BaseTextStyle.black().big,
+                    style: suggestTitleStyle(const BaseTextStyle.black()),
                   ),
                 ),
               )
@@ -42,18 +43,18 @@ class SuggestNoteWidget extends ASuggestWidget {
                   child: Text(
                     suggest.subTitle,
                     maxLines: 2,
-                    style: const BaseTextStyle.grey().normal,
+                    style: suggestSubTitleStyle(const BaseTextStyle.grey()),
                   ),
                 ),
                 Icon(
                   IconData(0xe0d1, fontFamily: "Qunar"),
                   size: BaseTextFontSize.BIG,
-                  color: const BaseTextStyle.grey().color,
+                  color: BaseColors.GREY,
                 ),
                 Text(
                   suggest.count?.toString() ?? "",
                   maxLines: 1,
-                  style: const BaseTextStyle.grey().normal,
+                  style: suggestSubTitleStyle(const BaseTextStyle.grey()),
                 )
               ],
             ),

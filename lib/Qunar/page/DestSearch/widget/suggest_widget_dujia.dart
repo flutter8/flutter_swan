@@ -29,7 +29,7 @@ class SuggestDujiaWidget extends ASuggestWidget {
                   padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                   child: Text(
                     suggest.name,
-                    style: const BaseTextStyle.blue().superBig,
+                    style: suggestTitleStyle(const BaseTextStyle.blue()),
                   ),
                 ),
               ),
@@ -48,10 +48,10 @@ class SuggestDujiaWidget extends ASuggestWidget {
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     padding: EdgeInsets.zero,
                     labelPadding: const EdgeInsets.symmetric(horizontal: BaseDimens.BIG, vertical: 0),
-                    backgroundColor: Color(0xFFFAFAFA),
+                    backgroundColor: Colors.grey[50],
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
-                        color: Color(0xFFF5F5F5),
+                        color: Colors.grey[200],
                         width: 1,
                       ),
                       borderRadius: BorderRadius.all(

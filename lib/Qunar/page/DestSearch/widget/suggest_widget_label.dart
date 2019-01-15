@@ -12,7 +12,7 @@ class SuggestLabelWidget extends ASuggestWidget {
       padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
       child: Text(
         suggest.name,
-        style: const BaseTextStyle.grey().normal,
+        style: suggestTitleStyle(const BaseTextStyle.grey()),
       ),
     );
   }

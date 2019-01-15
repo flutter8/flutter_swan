@@ -8,7 +8,7 @@ class SuggestDividerWidget extends ASuggestWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFF5F5F5),
+      color: Colors.grey[100],
       height: 8,
     );
   }

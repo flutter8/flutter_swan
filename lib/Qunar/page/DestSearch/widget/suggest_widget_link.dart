@@ -26,7 +26,7 @@ class SuggestLinkWidget extends ASuggestWidget {
                 suggest.name,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: const BaseTextStyle.black().superBig,
+                style: suggestTitleStyle(const BaseTextStyle.black()),
               ),
             ),
           ),

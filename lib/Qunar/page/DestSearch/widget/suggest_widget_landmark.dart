@@ -28,7 +28,7 @@ class SuggestLandmarkWidget extends ASuggestWidget {
                   padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                   child: Text(
                     suggest.name,
-                    style: const BaseTextStyle.black().superBig,
+                    style: suggestTitleStyle(const BaseTextStyle.black()),
                   ),
                 ),
               )
@@ -49,7 +49,7 @@ class SuggestLandmarkWidget extends ASuggestWidget {
             child: Text(
               suggest.subTitle,
               maxLines: 1,
-              style: const BaseTextStyle.grey().normal,
+              style: suggestSubTitleStyle(const BaseTextStyle.grey()),
             ),
           );
   }
