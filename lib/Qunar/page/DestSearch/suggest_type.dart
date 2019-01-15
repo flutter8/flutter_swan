@@ -6,117 +6,117 @@ mixin DestSuggestType {
   static const int SUGGEST_DIVIDER = 2;
 
   /// 更多结果(看subtype，query，暂时忽略)
-  static const int list_more = 3;
+  static const int SUGGEST_MORE = 3;
 
   /// 国家(看id)
-  static const int loc_nation = 4;
+  static const int SUGGEST_LOC_NATION = 4;
 
   /// 省份(看id)
-  static const int loc_province = 5;
+  static const int SUGGEST_LOC_PROVINCE = 5;
 
   /// 城市(看id)
-  static const int loc_city = 6;
+  static const int SUGGEST_LOC_CITY = 6;
 
   /// 景点(看id，cityid, cityname)
-  static const int poi_scenic = 7;
+  static const int SUGGEST_POI_SCENIC = 7;
 
   /// 玩乐(看id，cityid, cityname)
-  static const int poi_ent = 8;
+  static const int SUGGEST_POI_ENT = 8;
 
   /// 酒店(看id，cityid, cityname)
-  static const int poi_hotel = 9;
+  static const int SUGGEST_POI_HOTEL = 9;
 
   /// 美食(看id，cityid, cityname)
-  static const int poi_food = 10;
+  static const int SUGGEST_POI_FOOD = 10;
 
   /// 购物(看id，cityid, cityname)
-  static const int poi_shopping = 11;
+  static const int SUGGEST_POI_SHOPPING = 11;
 
   /// 交通(看id，cityid, cityname)
-  static const int poi_transport = 12;
+  static const int SUGGEST_POI_TRANSPORT = 12;
 
   /// 游记(看id)
-  static const int note = 13;
+  static const int SUGGEST_NOTE = 13;
 
   /// 聪游榜(看id)
-  static const int smart = 14;
+  static const int SUGGEST_SMART = 14;
 
   /// 机票(看cityname,destcityname)
-  static const int flight_ticket = 15;
+  static const int SUGGEST_FLIGHT_TICKET = 15;
 
   /// 酒店列表(看cityid)  子项酒店品牌(看cityid，extralist.name)
-  static const int hotel_list = 16;
+  static const int SUGGEST_HOTEL_LIST = 16;
 
   /// 酒店品牌(看cityid，queryname)
-  static const int hotel_brand = 17;
+  static const int SUGGEST_HOTEL_BRAND = 17;
 
   /// 附近景点(看cityid, lat, lng，type=4，如果是poi附近，则有queryname)
-  static const int near_poi_scenic = 18;
+  static const int SUGGEST_POI_NEAR_SCENIC = 18;
 
   /// 附近酒店(看cityid, lat, lng, type=2，如果是poi附近，则有queryname)
-  static const int near_poi_hotel = 19;
+  static const int SUGGEST_POI_NEAR_HOTEL = 19;
 
   /// 附近美食(看cityid, lat, lng，type=5，如果是poi附近，则有queryname)
-  static const int near_poi_food = 20;
+  static const int SUGGEST_POI_NEAR_FOOD = 20;
 
   /// 附近玩乐(看cityid, lat, lng，type=6，如果是poi附近，则有queryname)
-  static const int near_poi_ent = 21;
+  static const int SUGGEST_POI_NEAR_ENT = 21;
 
   /// 附近购物(看cityid, lat, lng，type=3，如果是poi附近，则有queryname)
-  static const int near_poi_shopping = 22;
+  static const int SUGGEST_POI_NEAR_SHOPPING = 22;
 
   /// 附近交通(看cityid, lat, lng，type=21，如果是poi附近，则有queryname)
-  static const int near_poi_transport = 23;
+  static const int SUGGEST_POI_NEAR_TRANSPORT = 23;
 
   /// 发现
-  static const int page_discovery = 24;
+  static const int SUGGEST_DISCOVERY = 24;
 
   /// 创建
-  static const int page_poi_create = 25;
+  static const int SUGGEST_POI_CREATE = 25;
 
   /// 反馈
-  static const int page_feedback = 26;
+  static const int SUGGEST_FEEDBACK = 26;
 
   /// 客服电话
-  static const int page_call_center = 27;
+  static const int SUGGEST_CALL_CENTER = 27;
 
   /// 景点列表(看cityid) 子项看(cityid,extralist.id,extralist.name)
-  static const int poi_list = 28;
+  static const int SUGGEST_POI_LIST = 28;
 
   /// 机票低价提醒(看cityname,destcityname）
-  static const int flight_sells = 29;
+  static const int SUGGEST_FLIGHT_SELLS = 29;
 
   /// 游记更多，看queryname
-  static const int list_more_note = 30;
+  static const int SUGGEST_MORE_NOTE = 30;
 
   /// 聪游榜更多 看queryname
-  static const int list_more_smart = 31;
+  static const int SUGGEST_MORE_SMART = 31;
 
   /// poi更多 看queryname
-  static const int list_more_poi = 32;
+  static const int SUGGEST_MORE_POI = 32;
 
   /// 无结果空图片
-  static const int list_empty = 33;
+  static const int SUGGEST_NO_DATA = 33;
 
   /// 美食列表(看cityid)
-  static const int poi_list_food = 34;
+  static const int SUGGEST_POI_LIST_FOOD = 34;
 
   /// 玩乐列表(看cityid)
-  static const int poi_list_ent = 35;
+  static const int SUGGEST_POI_LIST_ENT = 35;
 
   /// 购物列表(看cityid)
-  static const int poi_list_shopping = 36;
+  static const int SUGGEST_POI_LIST_SHOPPING = 36;
 
   /// 旅行经验，看id
-  static const int experience = 37;
+  static const int SUGGEST_EXPERIENCE = 37;
 
   /// 旅行经验更多，看cityId
-  static const int list_more_experience = 38;
+  static const int SUGGEST_MORE_EXPERIENCE = 38;
 
   /// 旅游度假产品
-  static const int dujia_product = 39;
+  static const int SUGGEST_DUJIA_PRODUCT = 39;
   // url(看subtype和usehybrid)
-  static const int page_web_link = 100;
+  static const int SUGGEST_WEB_PAGE = 100;
 }
 
 mixin DestSuggestSubType {

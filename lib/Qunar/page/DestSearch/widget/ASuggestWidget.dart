@@ -44,76 +44,76 @@ abstract class ASuggestWidget extends StatelessWidget {
     switch (type ?? 0) {
       case DestSuggestType.SUGGEST_LIST_HEADER:
       case DestSuggestType.SUGGEST_DIVIDER:
-      case DestSuggestType.list_more:
+      case DestSuggestType.SUGGEST_MORE:
         return null;
-      case DestSuggestType.loc_nation:
-      case DestSuggestType.loc_province:
-      case DestSuggestType.loc_city:
+      case DestSuggestType.SUGGEST_LOC_NATION:
+      case DestSuggestType.SUGGEST_LOC_PROVINCE:
+      case DestSuggestType.SUGGEST_LOC_CITY:
         return QImageSet().dest_search_ic_suggest_landmark;
-      case DestSuggestType.poi_scenic:
+      case DestSuggestType.SUGGEST_POI_SCENIC:
         return QImageSet().dest_search_ic_suggest_poi_scenic;
-      case DestSuggestType.poi_ent:
+      case DestSuggestType.SUGGEST_POI_ENT:
         return QImageSet().dest_search_ic_suggest_poi_ent;
-      case DestSuggestType.poi_hotel:
+      case DestSuggestType.SUGGEST_POI_HOTEL:
         return QImageSet().dest_search_ic_suggest_poi_hotel;
-      case DestSuggestType.poi_food:
+      case DestSuggestType.SUGGEST_POI_FOOD:
         return QImageSet().dest_search_ic_suggest_poi_food;
-      case DestSuggestType.poi_shopping:
+      case DestSuggestType.SUGGEST_POI_SHOPPING:
         return QImageSet().dest_search_ic_suggest_poi_shopping;
-      case DestSuggestType.poi_transport:
+      case DestSuggestType.SUGGEST_POI_TRANSPORT:
         return QImageSet().dest_search_ic_suggest_poi_transport;
-      case DestSuggestType.note:
+      case DestSuggestType.SUGGEST_NOTE:
         return QImageSet().dest_search_ic_suggest_note;
-      case DestSuggestType.smart:
+      case DestSuggestType.SUGGEST_SMART:
         return QImageSet().dest_search_ic_suggest_smart;
-      case DestSuggestType.flight_ticket:
+      case DestSuggestType.SUGGEST_FLIGHT_TICKET:
         return QImageSet().dest_search_ic_suggest_flight;
-      case DestSuggestType.hotel_list:
+      case DestSuggestType.SUGGEST_HOTEL_LIST:
         return QImageSet().dest_search_ic_suggest_poi_hotel;
-      case DestSuggestType.hotel_brand:
+      case DestSuggestType.SUGGEST_HOTEL_BRAND:
         return QImageSet().dest_search_ic_suggest_poi_hotel;
-      case DestSuggestType.near_poi_scenic:
+      case DestSuggestType.SUGGEST_POI_NEAR_SCENIC:
         return QImageSet().dest_search_ic_suggest_poi_scenic;
-      case DestSuggestType.near_poi_hotel:
+      case DestSuggestType.SUGGEST_POI_NEAR_HOTEL:
         return QImageSet().dest_search_ic_suggest_poi_hotel;
-      case DestSuggestType.near_poi_food:
+      case DestSuggestType.SUGGEST_POI_NEAR_FOOD:
         return QImageSet().dest_search_ic_suggest_poi_food;
-      case DestSuggestType.near_poi_ent:
+      case DestSuggestType.SUGGEST_POI_NEAR_ENT:
         return QImageSet().dest_search_ic_suggest_poi_ent;
-      case DestSuggestType.near_poi_shopping:
+      case DestSuggestType.SUGGEST_POI_NEAR_SHOPPING:
         return QImageSet().dest_search_ic_suggest_poi_shopping;
-      case DestSuggestType.near_poi_transport:
+      case DestSuggestType.SUGGEST_POI_NEAR_TRANSPORT:
         return QImageSet().dest_search_ic_suggest_poi_transport;
-      case DestSuggestType.page_discovery:
+      case DestSuggestType.SUGGEST_DISCOVERY:
         return QImageSet().dest_search_ic_suggest_discovery;
-      case DestSuggestType.page_poi_create:
+      case DestSuggestType.SUGGEST_POI_CREATE:
         return QImageSet().dest_search_ic_suggest_poi_create;
-      case DestSuggestType.page_feedback:
+      case DestSuggestType.SUGGEST_FEEDBACK:
         return QImageSet().dest_search_ic_suggest_feedback;
-      case DestSuggestType.page_call_center:
+      case DestSuggestType.SUGGEST_CALL_CENTER:
         return QImageSet().dest_search_ic_suggest_call_center;
-      case DestSuggestType.poi_list:
+      case DestSuggestType.SUGGEST_POI_LIST:
         return QImageSet().dest_search_ic_suggest_poi_scenic;
-      case DestSuggestType.poi_list_food:
+      case DestSuggestType.SUGGEST_POI_LIST_FOOD:
         return QImageSet().dest_search_ic_suggest_poi_food;
-      case DestSuggestType.poi_list_ent:
+      case DestSuggestType.SUGGEST_POI_LIST_ENT:
         return QImageSet().dest_search_ic_suggest_poi_ent;
-      case DestSuggestType.poi_list_shopping:
+      case DestSuggestType.SUGGEST_POI_LIST_SHOPPING:
         return QImageSet().dest_search_ic_suggest_poi_shopping;
-      case DestSuggestType.flight_sells:
+      case DestSuggestType.SUGGEST_FLIGHT_SELLS:
         return QImageSet().dest_search_ic_suggest_flight;
-      case DestSuggestType.list_more_note:
-      case DestSuggestType.list_more_smart:
-      case DestSuggestType.list_more_poi:
-      case DestSuggestType.list_more_experience:
+      case DestSuggestType.SUGGEST_MORE_NOTE:
+      case DestSuggestType.SUGGEST_MORE_SMART:
+      case DestSuggestType.SUGGEST_MORE_POI:
+      case DestSuggestType.SUGGEST_MORE_EXPERIENCE:
         return QImageSet().dest_search_ic_suggest_more;
-      case DestSuggestType.dujia_product:
+      case DestSuggestType.SUGGEST_DUJIA_PRODUCT:
         return QImageSet().dest_search_ic_suggest_dujia;
-      case DestSuggestType.list_empty:
+      case DestSuggestType.SUGGEST_NO_DATA:
         return null;
-      case DestSuggestType.experience:
+      case DestSuggestType.SUGGEST_EXPERIENCE:
         return QImageSet().dest_search_ic_suggest_experience;
-      case DestSuggestType.page_web_link:
+      case DestSuggestType.SUGGEST_WEB_PAGE:
         return findSuggestIconWithSubType(subType);
       default:
         return null;
@@ -155,10 +155,10 @@ abstract class ASuggestWidget extends StatelessWidget {
 
   Widget buildSuggestRightArrow(int type, int subType) {
     switch (type ?? 0) {
-      case DestSuggestType.list_more:
-      case DestSuggestType.dujia_product:
+      case DestSuggestType.SUGGEST_MORE:
+      case DestSuggestType.SUGGEST_DUJIA_PRODUCT:
         return buildSuggestRightArrowWidget();
-      case DestSuggestType.page_web_link:
+      case DestSuggestType.SUGGEST_WEB_PAGE:
         return buildSuggestRightArrowWithSubType(subType);
       default:
         return Container();

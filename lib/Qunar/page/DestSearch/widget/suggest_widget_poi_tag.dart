@@ -5,8 +5,8 @@ import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
 import 'dart:math';
 
-class SuggestDujiaWidget extends ASuggestWidget {
-  SuggestDujiaWidget(Suggest suggest) : super(suggest);
+class SuggestPoiTagWidget extends ASuggestWidget {
+  SuggestPoiTagWidget(Suggest suggest) : super(suggest);
 
   @override
   Widget build(BuildContext context) {

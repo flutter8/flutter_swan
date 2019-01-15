@@ -5,8 +5,8 @@ import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
 
-class SuggestNoteWidget extends ASuggestWidget {
-  SuggestNoteWidget(Suggest suggest) : super(suggest);
+class SuggestPoiWidget extends ASuggestWidget {
+  SuggestPoiWidget(Suggest suggest) : super(suggest);
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,6 @@ class SuggestNoteWidget extends ASuggestWidget {
                   padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                   child: Text(
                     suggest.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                     style: suggestTitleStyle(const BaseTextStyle.black()),
                   ),
                 ),
@@ -41,23 +39,20 @@ class SuggestNoteWidget extends ASuggestWidget {
             padding: const EdgeInsets.only(top: BaseDimens.NORMAL, left: 28),
             child: Row(
               children: <Widget>[
-                Expanded(
+                Text(
+                  suggest.cityName,
+                  maxLines: 1,
+                  style: suggestSubTitleStyle(const BaseTextStyle.grey()),
+                ),
+                Spacer(),
+                Opacity(
+                  opacity: suggest.order ? 1 : 0,
                   child: Text(
-                    suggest.subTitle,
-                    maxLines: 2,
+                    "可预订",
+                    maxLines: 1,
                     style: suggestSubTitleStyle(const BaseTextStyle.grey()),
                   ),
                 ),
-                Icon(
-                  IconData(0xe0d1, fontFamily: "Qunar"),
-                  size: BaseTextFontSize.BIG,
-                  color: BaseColors.GREY,
-                ),
-                Text(
-                  suggest.count?.toString() ?? "",
-                  maxLines: 1,
-                  style: suggestSubTitleStyle(const BaseTextStyle.grey()),
-                )
               ],
             ),
           ),
