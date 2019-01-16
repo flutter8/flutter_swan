@@ -19,7 +19,6 @@ class QDestSearchWidget extends StatelessWidget {
   QDestSearchWidget({Key key}) : super(key: key) {
     controller = TextEditingController();
     controller.addListener(() {
-      // print(controller.text);
       bloc.requestSuggestDest.add({
         "query": controller.text,
         "cityId": "299914",
@@ -47,6 +46,7 @@ class QDestSearchWidget extends StatelessWidget {
     return StoreConnector<BaseReduxState, AMapLocation>(
       converter: (store) => store.state.location,
       builder: (context, location) {
+        print("StoreConnector::${location.latitude}, ${location.longitude}, ${location.city}");
         return Scaffold(
           appBar: navigationBar(controller),
           body: Container(
@@ -55,7 +55,6 @@ class QDestSearchWidget extends StatelessWidget {
               stream: bloc.suggestList,
               builder: (BuildContext contex, AsyncSnapshot snapshot) {
                 final data = snapshot.data;
-                print("1111${location.latitude}, ${location.longitude}, ${location.locationType}");
                 return IndexedStack(
                   index: 0,
                   children: <Widget>[

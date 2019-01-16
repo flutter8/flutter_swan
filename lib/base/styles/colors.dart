@@ -9,7 +9,7 @@ mixin BaseColors {
 
   static const Color BLUE = Color(0xFF33CCCC);
 
-  static const Color PRICE = Color(0xFF333333);
+  static const Color PRICE = Color(0xFFFF643F);
 
-  static const Color SUGGEST = Color(0xFF333333);
+  static const Color SUGGEST = Color(0xFFFF9201);
 }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swan/base/styles/colors.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/suggest_type.dart';
 import 'package:flutter_swan/Qunar/ImageSet.dart';
 
 abstract class ASuggestWidget extends StatelessWidget {
+  static const highlight = const TextStyle(color: BaseColors.SUGGEST);
+
   final Suggest suggest;
 
   const ASuggestWidget(this.suggest);
@@ -17,27 +20,30 @@ abstract class ASuggestWidget extends StatelessWidget {
     return src.normal;
   }
 
-  TextSpan buildSuggestHighlightText(String text, {String src = "北小卡"}) {
-    TextSpan textSpan = TextSpan(children: []);
-    text.splitMapJoin(
-      RegExp("[$src]"),
-      onMatch: (match) {
-        print("onMatch::${match.group(0)}");
-        textSpan.children.add(
-          TextSpan(
-            text: match.group(0),
-            style: const BaseTextStyle.suggest().big,
-          ),
-        );
-      },
-      onNonMatch: (nonMatch) {
-        textSpan.children.add(TextSpan(
-          text: nonMatch,
-        ));
-      },
-    );
+  TextSpan buildSuggestHighlightText(String text, {String src="北京"}) {
+    if (src?.isEmpty ?? true) {
+      return TextSpan(text: text);
+    } else {
+      TextSpan textSpan = TextSpan(children: []);
+      text.splitMapJoin(
+        RegExp("[$src]"),
+        onMatch: (match) {
+          textSpan.children.add(
+            TextSpan(
+              text: match.group(0),
+              style: highlight,
+            ),
+          );
+        },
+        onNonMatch: (nonMatch) {
+          textSpan.children.add(TextSpan(
+            text: nonMatch,
+          ));
+        },
+      );
 
-    return textSpan;
+      return textSpan;
+    }
   }
 
   String findSuggestIconWithType(int type, int subType) {

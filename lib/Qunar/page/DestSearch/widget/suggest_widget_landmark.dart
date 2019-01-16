@@ -26,8 +26,8 @@ class SuggestLandmarkWidget extends ASuggestWidget {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
-                  child: Text(
-                    suggest.name,
+                  child: Text.rich(
+                    buildSuggestHighlightText(suggest?.name ?? ""),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: suggestTitleStyle(const BaseTextStyle.black()),
@@ -36,23 +36,20 @@ class SuggestLandmarkWidget extends ASuggestWidget {
               )
             ],
           ),
-          buildSubTitleWidget(suggest.subTitle),
+          Opacity(
+            opacity: suggest?.subTitle?.length?.toDouble() ?? 0,
+            child: Container(
+              alignment: Alignment.centerLeft,
+              padding: const EdgeInsets.only(top: BaseDimens.NORMAL, left: 28),
+              child: Text.rich(
+                buildSuggestHighlightText(suggest?.subTitle ?? ""),
+                maxLines: 1,
+                style: suggestSubTitleStyle(const BaseTextStyle.grey()),
+              ),
+            ),
+          )
         ],
       ),
     );
-  }
-
-  Widget buildSubTitleWidget(String subTitle) {
-    return subTitle?.isEmpty ?? true
-        ? Container()
-        : Container(
-            alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.only(top: BaseDimens.NORMAL, left: 28),
-            child: Text(
-              suggest.subTitle,
-              maxLines: 1,
-              style: suggestSubTitleStyle(const BaseTextStyle.grey()),
-            ),
-          );
   }
 }

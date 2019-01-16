@@ -19,10 +19,14 @@ class SearchBloc {
       requestSuggestDest,
       requestRecommendHot,
       requestRecommendHot.flatMap((Map param) => request(param)),
-      requestSuggestDest
-          .distinct()
-          .debounce(const Duration(milliseconds: 250))
-          .flatMap((Map param) => Backend.requestApiSuggestDest(param)),
+      requestSuggestDest.distinct().debounce(const Duration(milliseconds: 250)).flatMap((Map param) {
+        String query = null == param ? null : param["query"];
+        if (query?.isEmpty ?? true) {
+          return Observable.just(SuggestList.empty());
+        } else {
+          return Backend.requestApiSuggestDest(param);
+        }
+      }),
     );
   }
 

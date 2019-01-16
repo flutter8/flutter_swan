@@ -22,8 +22,8 @@ class SuggestFlightWidget extends ASuggestWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
-              child: Text(
-                suggest.name,
+              child: Text.rich(
+                buildSuggestHighlightText(suggest?.name ?? ""),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: suggestTitleStyle(const BaseTextStyle.black()),

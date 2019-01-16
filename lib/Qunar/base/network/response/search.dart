@@ -16,6 +16,8 @@ class SuggestList extends BaseListResponse<Suggest> {
     this.hotOffset,
   ) : super(totalCount, list);
 
+  factory SuggestList.empty() => SuggestList(0, [], 0, 0);
+
   factory SuggestList.fromJson(Map<String, dynamic> json) => _$SuggestListFromJson(json);
 
   Map<String, dynamic> toJson() => _$SuggestListToJson(this);
