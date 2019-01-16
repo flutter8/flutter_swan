@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_swan/base/redux/actions.dart';
+import 'package:flutter_swan/base/redux/state.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/index.dart';
+import 'package:amap_location/amap_location.dart';
 
 class QunarHomeIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    getLocation(context);
+
     return Scaffold(
       appBar: CupertinoNavigationBar(
         middle: Text("middle"),
@@ -23,7 +29,7 @@ class QunarHomeIndex extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  new MaterialPageRoute(builder: (context) {
+                  MaterialPageRoute(builder: (context) {
                     return QDestSearchWidget();
                   }),
                 );
@@ -33,5 +39,10 @@ class QunarHomeIndex extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void getLocation(context) async {
+    AMapLocation loc = await AMapLocationClient.getLocation(true);
+    StoreProvider.of<BaseReduxState>(context).dispatch(BaseUpdateLocateAction(loc));
   }
 }

@@ -1,5 +1,8 @@
+import 'package:amap_location/amap_location.dart';
 import "package:flutter/material.dart";
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_swan/base/redux/state.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/bloc.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/navigation.dart';
@@ -16,7 +19,7 @@ class QDestSearchWidget extends StatelessWidget {
   QDestSearchWidget({Key key}) : super(key: key) {
     controller = TextEditingController();
     controller.addListener(() {
-      print(controller.text);
+      // print(controller.text);
       bloc.requestSuggestDest.add({
         "query": controller.text,
         "cityId": "299914",
@@ -41,27 +44,32 @@ class QDestSearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: navigationBar(controller),
-      body: Container(
-        color: Colors.white,
-        child: StreamBuilder(
-          stream: bloc.suggestList,
-          builder: (BuildContext contex, AsyncSnapshot snapshot) {
-            final data = snapshot.data;
-            print(data);
-            return IndexedStack(
-              index: 0,
-              children: <Widget>[
-                // DestSearchRecommendWidget(data),
-                DestSearchSuggestWidget(
-                  suggestList: data,
-                ),
-              ],
-            );
-          },
-        ),
-      ),
+    return StoreConnector<BaseReduxState, AMapLocation>(
+      converter: (store) => store.state.location,
+      builder: (context, location) {
+        return Scaffold(
+          appBar: navigationBar(controller),
+          body: Container(
+            color: Colors.white,
+            child: StreamBuilder(
+              stream: bloc.suggestList,
+              builder: (BuildContext contex, AsyncSnapshot snapshot) {
+                final data = snapshot.data;
+                print("1111${location.latitude}, ${location.longitude}, ${location.locationType}");
+                return IndexedStack(
+                  index: 0,
+                  children: <Widget>[
+                    // DestSearchRecommendWidget(data),
+                    DestSearchSuggestWidget(
+                      suggestList: data,
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }
