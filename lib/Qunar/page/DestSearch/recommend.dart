@@ -9,6 +9,8 @@ class DestSearchRecommendWidget extends StatelessWidget {
 
   final SearchRecommendProductList recommendProductList;
 
+  DestSearchRecommendWidget.node(this.recommendHotList, this.recommendProductList);
+
   DestSearchRecommendWidget(data)
       : recommendHotList = null == data ? null : data["hot"],
         recommendProductList = null == data ? null : data["product"];

@@ -5,7 +5,7 @@ import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
 
 class SuggestExperienceWidget extends ASuggestWidget {
-  SuggestExperienceWidget(Suggest suggest) : super(suggest);
+  SuggestExperienceWidget(Suggest suggest, {query}) : super(suggest, query: query);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class SuggestExperienceWidget extends ASuggestWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                   child: Text.rich(
-                    buildSuggestHighlightText(suggest?.name ?? ""),
+                    buildSuggestHighlightText(suggest?.name ?? "", src: query),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: suggestTitleStyle(const BaseTextStyle.black()),

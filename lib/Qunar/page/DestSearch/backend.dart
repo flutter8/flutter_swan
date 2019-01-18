@@ -5,7 +5,7 @@ import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:rxdart/rxdart.dart';
 
 class Backend {
-  static Observable requestApiSuggestDest(params, {stringify = true}) {
+  static Observable<SuggestList> requestApiSuggestDest(params, {stringify = true}) {
     return Observable.just(params).asyncMap((param) async {
       NetRequestCommander commander = NetRequestCommander.request(null);
       Response response = await commander.post("api/${QAPI_Suggest.dest}", params, stringify: stringify);
@@ -21,7 +21,7 @@ class Backend {
     }).map((response) => SearchRecommendProductList.fromJson(response.data["data"]));
   }
 
-  static Observable requestApiSearchHotQuery(params, {stringify = true}) {
+  static Observable<SearchRecommendHotList> requestApiSearchHotQuery(params, {stringify = true}) {
     return Observable.just(params).asyncMap((param) async {
       NetRequestCommander commander = NetRequestCommander.request(null);
       Response response = await commander.post("api/${QAPI_Search.hotQuery}", params, stringify: stringify);

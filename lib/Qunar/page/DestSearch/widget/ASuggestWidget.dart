@@ -8,9 +8,11 @@ import 'package:flutter_swan/Qunar/ImageSet.dart';
 abstract class ASuggestWidget extends StatelessWidget {
   static const highlight = const TextStyle(color: BaseColors.SUGGEST);
 
+  final String query;
+
   final Suggest suggest;
 
-  const ASuggestWidget(this.suggest);
+  const ASuggestWidget(this.suggest, {this.query});
 
   TextStyle suggestTitleStyle(BaseTextStyle src) {
     return src.superBig;
@@ -20,7 +22,7 @@ abstract class ASuggestWidget extends StatelessWidget {
     return src.normal;
   }
 
-  TextSpan buildSuggestHighlightText(String text, {String src="北京"}) {
+  TextSpan buildSuggestHighlightText(String text, {String src = ""}) {
     if (src?.isEmpty ?? true) {
       return TextSpan(text: text);
     } else {

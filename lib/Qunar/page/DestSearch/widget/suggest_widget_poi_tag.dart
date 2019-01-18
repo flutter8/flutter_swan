@@ -6,7 +6,7 @@ import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
 import 'dart:math';
 
 class SuggestPoiTagWidget extends ASuggestWidget {
-  SuggestPoiTagWidget(Suggest suggest) : super(suggest);
+  SuggestPoiTagWidget(Suggest suggest, {query}) : super(suggest, query: query);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class SuggestPoiTagWidget extends ASuggestWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                     child: Text.rich(
-                      buildSuggestHighlightText(suggest?.name ?? ""),
+                      buildSuggestHighlightText(suggest?.name ?? "", src: query),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: suggestTitleStyle(const BaseTextStyle.blue()),
@@ -73,9 +73,8 @@ class SuggestPoiTagWidget extends ASuggestWidget {
     }
 
     extra.length = 4;
-    return List.generate(extra.length, (index) {
-      Suggest extraSuggest = extra.elementAt(index);
-      if (null == extraSuggest) {
+    return extra.map((subSuggest) {
+      if (null == subSuggest) {
         return Expanded(
           child: Container(),
         );
@@ -97,7 +96,7 @@ class SuggestPoiTagWidget extends ASuggestWidget {
                 ),
               ),
               child: Text(
-                extra.elementAt(index)?.name ?? "",
+                subSuggest.name,
                 style: const BaseTextStyle.black().big,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -106,6 +105,6 @@ class SuggestPoiTagWidget extends ASuggestWidget {
           ),
         );
       }
-    });
+    }).toList();
   }
 }

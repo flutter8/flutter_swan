@@ -6,7 +6,7 @@ import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
 import 'dart:math';
 
 class SuggestDujiaWidget extends ASuggestWidget {
-  SuggestDujiaWidget(Suggest suggest) : super(suggest);
+  SuggestDujiaWidget(Suggest suggest, {query}) : super(suggest, query: query);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class SuggestDujiaWidget extends ASuggestWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                     child: Text.rich(
-                      buildSuggestHighlightText(suggest?.name ?? ""),
+                      buildSuggestHighlightText(suggest?.name ?? "", src: query),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: suggestTitleStyle(const BaseTextStyle.blue()),

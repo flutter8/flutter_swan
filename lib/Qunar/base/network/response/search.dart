@@ -131,6 +131,8 @@ class SearchRecommendHotList extends BaseListResponse<SearchRecommendHot> {
     List<SearchRecommendHot> list,
   ) : super(totalCount, list);
 
+  factory SearchRecommendHotList.empty() => SearchRecommendHotList(0, []);
+
   factory SearchRecommendHotList.fromJson(Map<String, dynamic> json) => _$SearchRecommendHotListFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchRecommendHotListToJson(this);

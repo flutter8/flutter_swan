@@ -5,7 +5,7 @@ import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
 
 class SuggestLandmarkWidget extends ASuggestWidget {
-  SuggestLandmarkWidget(Suggest suggest) : super(suggest);
+  SuggestLandmarkWidget(Suggest suggest, {query}) : super(suggest, query: query);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class SuggestLandmarkWidget extends ASuggestWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
                   child: Text.rich(
-                    buildSuggestHighlightText(suggest?.name ?? ""),
+                    buildSuggestHighlightText(suggest?.name ?? "", src: query),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: suggestTitleStyle(const BaseTextStyle.black()),
@@ -36,13 +36,13 @@ class SuggestLandmarkWidget extends ASuggestWidget {
               )
             ],
           ),
-          Opacity(
-            opacity: suggest?.subTitle?.length?.toDouble() ?? 0,
+          Offstage(
+            offstage: suggest?.subTitle?.isEmpty ?? true,
             child: Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(top: BaseDimens.NORMAL, left: 28),
               child: Text.rich(
-                buildSuggestHighlightText(suggest?.subTitle ?? ""),
+                buildSuggestHighlightText(suggest?.subTitle ?? "", src: query),
                 maxLines: 1,
                 style: suggestSubTitleStyle(const BaseTextStyle.grey()),
               ),
