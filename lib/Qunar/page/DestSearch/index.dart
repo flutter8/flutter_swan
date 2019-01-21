@@ -2,8 +2,8 @@ import 'package:amap_location/amap_location.dart';
 import "package:flutter/material.dart";
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_swan/Qunar/blocs/dest_search/dest_search_bloc.dart';
-import 'package:flutter_swan/Qunar/blocs/dest_search/dest_search_event.dart';
+import 'package:flutter_swan/Qunar/blocs/dest_search/bloc.dart';
+import 'package:flutter_swan/Qunar/blocs/dest_search/event.dart';
 import 'package:flutter_swan/Qunar/blocs/dest_search/dest_search_form_bloc.dart';
 import 'package:flutter_swan/Qunar/blocs/dest_search/dest_search_state.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/recommend.dart';
@@ -24,21 +24,21 @@ class _DestSearchWidgetState extends State<QDestSearchWidget> {
 
   SearchRecommendHotList recommendHotList;
 
-  DestSearchBloc pageBloc;
+  final DestSearchBloc pageBloc = DestSearchBloc();
 
-  DestSearchFormBloc bloc;
+  final DestSearchFormBloc bloc = DestSearchFormBloc();
 
   @override
   void initState() {
     super.initState();
 
-    pageBloc = DestSearchBloc();
-    bloc = DestSearchFormBloc();
-
     controller = TextEditingController();
     controller.addListener(() {
       bloc.onSuggestTextChanged(controller.text);
-      pageBloc.emitEvent(DestSearchBlocEvent(suggest: controller.text));
+      pageBloc.emitEvent(DestSearchBlocEvent(
+        EventType.suggest,
+        suggest: controller.text,
+      ));
     });
   }
 
@@ -58,7 +58,7 @@ class _DestSearchWidgetState extends State<QDestSearchWidget> {
           body: Container(
             color: Colors.white,
             child: IndexedStack(
-              index: StateType.inSuggest == state.stateType ? 1 : 0,
+              index: state.recommend ? 0 : 1,
               children: <Widget>[
                 DestSearchRecommendWidget(null),
                 StreamBuilder<SuggestList>(

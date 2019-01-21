@@ -2,18 +2,21 @@ import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/base/bloc/helper/bloc_event_state.dart';
 
 class DestSearchBlocState extends BlocState {
-  final StateType stateType;
+  final bool _inRecommend;
 
   final SuggestList suggestList;
 
-  DestSearchBlocState(this.stateType, {this.suggestList});
+  DestSearchBlocState(
+    this._inRecommend, {
+    this.suggestList,
+  });
 
-  factory DestSearchBlocState.initial() => DestSearchBlocState(StateType.initial);
+  bool get recommend => _inRecommend;
 
-  factory DestSearchBlocState.inRecommend() => DestSearchBlocState(StateType.inRecommend);
+  factory DestSearchBlocState.inRecommend() => DestSearchBlocState(true);
 
-  factory DestSearchBlocState.inSuggest({SuggestList suggestList}) =>
-      DestSearchBlocState(StateType.inSuggest, suggestList: suggestList);
+  factory DestSearchBlocState.inSuggest({SuggestList suggestList}) => DestSearchBlocState(
+        false,
+        suggestList: suggestList,
+      );
 }
-
-enum StateType { initial, inRecommend, inSuggest }
