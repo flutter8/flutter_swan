@@ -12,25 +12,25 @@ class Backend {
     });
   }
 
-  static Future<SearchRecommendProductList> requestApiRecommendProduct(params, {stringify = true}) async {
+  static Future<SearchProductResponse> requestApiRecommendProduct(params, {stringify = true}) async {
     return Future.sync(() {
       NetRequestCommander commander = NetRequestCommander.request(null);
       return commander.post("api/${QAPI_Search.recommendProduct}", params, stringify: stringify);
     }).then((response) {
       return (null == response?.data)
-          ? SearchRecommendProductList(0, [])
-          : SearchRecommendProductList.fromJson(response.data["data"]);
+          ? SearchProductResponse(0, [])
+          : SearchProductResponse.fromJson(response.data["data"]);
     });
   }
 
-  static Future<SearchRecommendHotList> requestApiSearchHotQuery(params, {stringify = true}) async {
+  static Future<SearchRecommendResponse> requestApiSearchHotQuery(params, {stringify = true}) async {
     return Future.sync(() {
       NetRequestCommander commander = NetRequestCommander.request(null);
       return commander.post("api/${QAPI_Search.hotQuery}", params, stringify: stringify);
     }).then((response) {
       return (null == response?.data)
-          ? SearchRecommendHotList(0, [])
-          : SearchRecommendHotList.fromJson(response.data["data"]);
+          ? SearchRecommendResponse(0, [])
+          : SearchRecommendResponse.fromJson(response.data["data"]);
     });
   }
 }

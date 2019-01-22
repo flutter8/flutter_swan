@@ -71,29 +71,29 @@ Map<String, dynamic> _$SuggestToJson(Suggest instance) => <String, dynamic>{
       'extra': instance.extra
     };
 
-SearchRecommendProductList _$SearchRecommendProductListFromJson(
+SearchProductResponse _$SearchRecommendProductListFromJson(
     Map<String, dynamic> json) {
-  return SearchRecommendProductList(
+  return SearchProductResponse(
       json['totalCount'] as int,
       (json['list'] as List)
           ?.map((e) => e == null
               ? null
-              : SearchRecommendProduct.fromJson(e as Map<String, dynamic>))
+              : SearchProduct.fromJson(e as Map<String, dynamic>))
           ?.toList());
 }
 
 Map<String, dynamic> _$SearchRecommendProductListToJson(
-        SearchRecommendProductList instance) =>
+        SearchProductResponse instance) =>
     <String, dynamic>{'totalCount': instance.totalCount, 'list': instance.list};
 
-SearchRecommendProduct _$SearchRecommendProductFromJson(
+SearchProduct _$SearchRecommendProductFromJson(
     Map<String, dynamic> json) {
-  return SearchRecommendProduct(json['type'] as String, json['name'] as String,
+  return SearchProduct(json['type'] as String, json['name'] as String,
       json['price'] as String, json['url'] as String, json['urlType'] as int);
 }
 
 Map<String, dynamic> _$SearchRecommendProductToJson(
-        SearchRecommendProduct instance) =>
+        SearchProduct instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -102,27 +102,27 @@ Map<String, dynamic> _$SearchRecommendProductToJson(
       'urlType': instance.urlType
     };
 
-SearchRecommendHotList _$SearchRecommendHotListFromJson(
+SearchRecommendResponse _$SearchRecommendHotListFromJson(
     Map<String, dynamic> json) {
-  return SearchRecommendHotList(
+  return SearchRecommendResponse(
       json['totalCount'] as int,
       (json['list'] as List)
           ?.map((e) => e == null
               ? null
-              : SearchRecommendHot.fromJson(e as Map<String, dynamic>))
+              : SearchRecommend.fromJson(e as Map<String, dynamic>))
           ?.toList());
 }
 
 Map<String, dynamic> _$SearchRecommendHotListToJson(
-        SearchRecommendHotList instance) =>
+        SearchRecommendResponse instance) =>
     <String, dynamic>{'totalCount': instance.totalCount, 'list': instance.list};
 
-SearchRecommendHot _$SearchRecommendHotFromJson(Map<String, dynamic> json) {
-  return SearchRecommendHot(json['id'] as int, json['name'] as String,
+SearchRecommend _$SearchRecommendHotFromJson(Map<String, dynamic> json) {
+  return SearchRecommend(json['id'] as int, json['name'] as String,
       json['type'] as int, json['poiType'] as int, json['tag']);
 }
 
-Map<String, dynamic> _$SearchRecommendHotToJson(SearchRecommendHot instance) =>
+Map<String, dynamic> _$SearchRecommendHotToJson(SearchRecommend instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

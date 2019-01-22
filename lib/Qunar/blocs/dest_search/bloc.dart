@@ -9,7 +9,7 @@ class DestSearchBloc extends BlocEventStateBase<DestSearchBlocEvent, DestSearchB
 
   @override
   Stream<DestSearchBlocState> eventHandler(DestSearchBlocEvent event, DestSearchBlocState currentState) async* {
-    print("eventHandler===========${event.event}, ${currentState.recommendHotResponse}");
+    print("eventHandler===========${event.event}, ${currentState.recommend}");
     switch (event.event) {
       case EventType.initial:
         List request = await Future.wait([
@@ -26,7 +26,7 @@ class DestSearchBloc extends BlocEventStateBase<DestSearchBlocEvent, DestSearchB
         ]);
 
         yield DestSearchBlocState.inRecommend(
-          hot: request?.elementAt(0),
+          recommend: request?.elementAt(0),
           product: request?.elementAt(1),
         );
         break;

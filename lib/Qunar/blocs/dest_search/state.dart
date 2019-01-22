@@ -8,36 +8,36 @@ class DestSearchBlocState extends BlocState {
 
   final bool _inRecommend;
 
-  final SuggestResponse suggestResponse;
+  final SuggestResponse suggest;
 
-  final SearchRecommendHotList recommendHotResponse;
+  final SearchRecommendResponse recommend;
 
-  final SearchRecommendProductList recommendProductResponse;
+  final SearchProductResponse product;
 
   DestSearchBlocState(
     this._inRecommend, {
     this.keyword,
-    this.suggestResponse,
-    this.recommendHotResponse,
-    this.recommendProductResponse,
+    this.suggest,
+    this.recommend,
+    this.product,
   }) : _initial = false;
 
   bool get hasInitial => _initial;
 
-  bool get recommend => _inRecommend;
+  bool get isRecommend => _inRecommend;
 
   void initialed() => _initial = true;
 
-  factory DestSearchBlocState.inRecommend({SearchRecommendHotList hot, SearchRecommendProductList product}) =>
+  factory DestSearchBlocState.inRecommend({SearchRecommendResponse recommend, SearchProductResponse product}) =>
       DestSearchBlocState(
         true,
-        recommendHotResponse: hot,
-        recommendProductResponse: product,
+        recommend: recommend,
+        product: product,
       );
 
   factory DestSearchBlocState.inSuggest({String keyword, SuggestResponse response}) => DestSearchBlocState(
         false,
         keyword: keyword,
-        suggestResponse: response,
+        suggest: response,
       );
 }

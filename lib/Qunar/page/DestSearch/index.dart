@@ -16,7 +16,7 @@ class QDestSearchWidget extends StatefulWidget {
 class _DestSearchWidgetState extends State<QDestSearchWidget> {
   TextEditingController controller;
 
-  SearchRecommendHotList recommendHotList;
+  SearchRecommendResponse recommendHotList;
 
   Function(String) onTextChanged;
 
@@ -52,15 +52,15 @@ class _DestSearchWidgetState extends State<QDestSearchWidget> {
           body: Container(
             color: Colors.white,
             child: IndexedStack(
-              index: state.recommend ? 0 : 1,
+              index: state.isRecommend ? 0 : 1,
               children: <Widget>[
                 DestSearchRecommendWidget(
-                  recommendHotList: state.recommendHotResponse,
-                  recommendProductList: state.recommendProductResponse,
+                  recommend: state.recommend,
+                  product: state.product,
                 ),
                 DestSearchSuggestWidget(
                   query: state.keyword,
-                  response: state.suggestResponse,
+                  response: state.suggest,
                 )
               ],
             ),

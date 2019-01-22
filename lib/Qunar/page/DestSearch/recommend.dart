@@ -5,15 +5,15 @@ import 'package:flutter_swan/base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 
 class DestSearchRecommendWidget extends StatelessWidget {
-  final SearchRecommendHotList recommendHotList;
+  final SearchRecommendResponse recommend;
 
-  final SearchRecommendProductList recommendProductList;
+  final SearchProductResponse product;
 
-  DestSearchRecommendWidget.node(this.recommendHotList, this.recommendProductList);
+  DestSearchRecommendWidget.node(this.recommend, this.product);
 
   DestSearchRecommendWidget({
-    this.recommendHotList,
-    this.recommendProductList,
+    this.recommend,
+    this.product,
   });
 
   @override
@@ -61,7 +61,7 @@ class DestSearchRecommendWidget extends StatelessWidget {
   }
 
   Widget buildRecommendProductWidget() {
-    List<Widget> children = List.from(recommendProductList?.list?.map((product) {
+    List<Widget> children = List.from(product?.list?.map((product) {
           return Container(
             padding: const EdgeInsets.symmetric(vertical: BaseDimens.NORMAL),
             child: Row(
@@ -172,7 +172,7 @@ class DestSearchRecommendWidget extends StatelessWidget {
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children: List.generate(recommendHotList?.list?.length ?? 0, (index) {
+            children: List.generate(recommend?.list?.length ?? 0, (index) {
               return Chip(
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 padding: EdgeInsets.zero,
@@ -188,7 +188,7 @@ class DestSearchRecommendWidget extends StatelessWidget {
                   ),
                 ),
                 label: Text(
-                  recommendHotList?.list?.elementAt(index)?.name ?? "NNull",
+                  recommend?.list?.elementAt(index)?.name ?? "NNull",
                 ),
               );
             }),
