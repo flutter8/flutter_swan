@@ -4,21 +4,21 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search.g.dart';
 
 @JsonSerializable()
-class SuggestList extends BaseListResponse<Suggest> {
+class SuggestResponse extends BaseListResponse<Suggest> {
   final int newOffset;
 
   final int hotOffset;
 
-  SuggestList(
+  SuggestResponse(
     int totalCount,
     List<Suggest> list,
     this.newOffset,
     this.hotOffset,
   ) : super(totalCount, list);
 
-  factory SuggestList.empty() => SuggestList(0, [], 0, 0);
+  factory SuggestResponse.empty() => SuggestResponse(0, [], 0, 0);
 
-  factory SuggestList.fromJson(Map<String, dynamic> json) => _$SuggestListFromJson(json);
+  factory SuggestResponse.fromJson(Map<String, dynamic> json) => _$SuggestListFromJson(json);
 
   Map<String, dynamic> toJson() => _$SuggestListToJson(this);
 }

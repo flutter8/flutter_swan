@@ -6,11 +6,20 @@ import 'package:flutter_swan/base/redux/state.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/index.dart';
 import 'package:amap_location/amap_location.dart';
 
-class QunarHomeIndex extends StatelessWidget {
+class QunarHomeIndex extends StatefulWidget {
+  _QunarHomeIndexState createState() => _QunarHomeIndexState();
+}
+
+class _QunarHomeIndexState extends State<QunarHomeIndex> {
+
+  @override
+    void initState() {
+      super.initState();
+      getLocation(context);
+    }
+ 
   @override
   Widget build(BuildContext context) {
-    getLocation(context);
-
     return Scaffold(
       appBar: CupertinoNavigationBar(
         middle: Text("middle"),
@@ -21,7 +30,6 @@ class QunarHomeIndex extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Colors.red[100],
         child: ListView(
           children: <Widget>[
             ListTile(

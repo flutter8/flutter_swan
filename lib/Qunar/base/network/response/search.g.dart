@@ -6,8 +6,8 @@ part of 'search.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SuggestList _$SuggestListFromJson(Map<String, dynamic> json) {
-  return SuggestList(
+SuggestResponse _$SuggestListFromJson(Map<String, dynamic> json) {
+  return SuggestResponse(
       json['totalCount'] as int,
       (json['list'] as List)
           ?.map((e) =>
@@ -17,7 +17,7 @@ SuggestList _$SuggestListFromJson(Map<String, dynamic> json) {
       json['hotOffset'] as int);
 }
 
-Map<String, dynamic> _$SuggestListToJson(SuggestList instance) =>
+Map<String, dynamic> _$SuggestListToJson(SuggestResponse instance) =>
     <String, dynamic>{
       'totalCount': instance.totalCount,
       'list': instance.list,

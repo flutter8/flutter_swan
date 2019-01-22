@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swan/Base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 
-Widget navigationBar(TextEditingController controller) {
+Widget navigationBar(Function(String) onTextChanged) {
   return CupertinoNavigationBar(
     automaticallyImplyLeading: false,
     padding: const EdgeInsetsDirectional.only(),
@@ -27,11 +27,11 @@ Widget navigationBar(TextEditingController controller) {
             size: BaseTextFontSize.HUGE,
             color: const BaseTextStyle.grey().color,
           ),
+          onChanged: onTextChanged,
           maxLength: 20,
           clearButtonMode: OverlayVisibilityMode.editing,
-          controller: controller,
           decoration: BoxDecoration(),
-          autofocus: true,
+          // autofocus: true,
           placeholder: "想去哪儿？",
           style: const BaseTextStyle.black().big,
         ),
@@ -45,7 +45,7 @@ Widget navigationBar(TextEditingController controller) {
       minSize: 64,
       padding: EdgeInsets.zero,
       onPressed: () {
-        controller.value = TextEditingValue(text: "abcd");
+        // controller.value = TextEditingValue(text: "abcd");
       },
     ),
   );

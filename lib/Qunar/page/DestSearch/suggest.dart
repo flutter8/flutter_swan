@@ -23,25 +23,25 @@ import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_smart.d
 class DestSearchSuggestWidget extends StatelessWidget {
   final String query;
 
-  final SuggestList suggestList;
+  final SuggestResponse response;
 
   DestSearchSuggestWidget({
     Key key,
     this.query,
-    this.suggestList,
+    this.response,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: ListView.separated(
-        itemCount: suggestList?.list?.length ?? 0,
+        itemCount: response?.list?.length ?? 0,
         itemBuilder: (BuildContext context, index) {
-          Suggest suggest = suggestList?.list?.elementAt(index);
+          Suggest suggest = response?.list?.elementAt(index);
           return buildSuggetItemAdapterWidget(context, suggest);
         },
         separatorBuilder: (BuildContext context, int index) {
-          Suggest suggest = suggestList?.list?.elementAt(index);
+          Suggest suggest = response?.list?.elementAt(index);
           return buildSuggetItemAdapterSeparator(context, suggest);
         },
       ),

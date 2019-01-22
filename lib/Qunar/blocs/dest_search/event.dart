@@ -13,4 +13,4 @@ class DestSearchBlocEvent extends BlocEvent {
   EventType get event => _eventType;
 }
 
-enum EventType { initial, suggest }
+enum EventType { initial, recommend, suggest }

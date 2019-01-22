@@ -5,12 +5,21 @@ import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:rxdart/rxdart.dart';
 
 class Backend {
-  static Observable<SuggestList> requestApiSuggestDest(params, {stringify = true}) {
+  static Observable<SuggestResponse> requestApiSuggestDest(params, {stringify = true}) {
     return Observable.just(params).asyncMap((param) async {
-      NetRequestCommander commander = NetRequestCommander.request(null);
-      Response response = await commander.post("api/${QAPI_Suggest.dest}", params, stringify: stringify);
-      return response;
-    }).map((response) => SuggestList.fromJson(response.data["data"]));
+      return requestApiSuggestDestCommander(param, stringify: stringify);
+    }).map((response) => SuggestResponse.fromJson(response.data["data"]));
+  }
+
+  static Future requestApiSuggestDestFuture(params, {stringify = true}) async {
+    return Future.sync(() => requestApiSuggestDestCommander(params, stringify: stringify)).then((response) {
+      return (null == response?.data) ? SuggestResponse.empty() : SuggestResponse.fromJson(response.data["data"]);
+    });
+  }
+
+  static Future requestApiSuggestDestCommander(params, {stringify = true}) async {
+    NetRequestCommander commander = NetRequestCommander.request(null);
+    return commander.post("api/${QAPI_Suggest.dest}", params, stringify: stringify);
   }
 
   static Observable requestApiRecommendProduct(params, {stringify = true}) {

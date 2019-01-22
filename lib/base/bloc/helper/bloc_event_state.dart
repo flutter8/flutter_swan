@@ -13,6 +13,8 @@ abstract class BlocEventStateBase<BlocEvent, BlocState> implements BlocBase {
 
   Function(BlocEvent) get emitEvent => _eventController.sink.add;
 
+  Function(Stream<BlocEvent>) get emitEventStream => _eventController.sink.addStream;
+
   Stream<BlocState> get state => _stateController.stream;
 
   BlocState get lastState => _stateController.value;
@@ -24,7 +26,7 @@ abstract class BlocEventStateBase<BlocEvent, BlocState> implements BlocBase {
   BlocEventStateBase({
     @required this.initialState,
   }) {
-    _eventController.listen((event) {
+    _eventController.debounce(Duration(milliseconds: 250)).listen((event) {
       BlocState current = lastState ?? initialState;
       eventHandler(event, current)?.forEach((newState) {
         _stateController.sink.add(newState);
