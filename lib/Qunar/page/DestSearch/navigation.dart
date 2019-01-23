@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swan/Base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 
-Widget navigationBar(Function(String) onTextChanged) {
+Widget navigationBar(Function(String) onTextChanged, focusNode) {
   return CupertinoNavigationBar(
     automaticallyImplyLeading: false,
     padding: const EdgeInsetsDirectional.only(),
@@ -22,6 +22,7 @@ Widget navigationBar(Function(String) onTextChanged) {
       child: Container(
         padding: const EdgeInsets.only(left: BaseDimens.SMALL),
         child: CupertinoTextField(
+          focusNode: focusNode,
           prefix: Icon(
             IconData(0xf50c, fontFamily: "Qunar"),
             size: BaseTextFontSize.HUGE,

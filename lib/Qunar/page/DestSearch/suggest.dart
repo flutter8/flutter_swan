@@ -21,13 +21,13 @@ import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_poi.dar
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_smart.dart';
 
 class DestSearchSuggestWidget extends StatelessWidget {
-  final String query;
+  final String keyword;
 
   final SuggestResponse response;
 
   DestSearchSuggestWidget({
     Key key,
-    this.query,
+    this.keyword,
     this.response,
   }) : super(key: key);
 
@@ -57,39 +57,39 @@ class DestSearchSuggestWidget extends StatelessWidget {
       case DestSuggestType.SUGGEST_LOC_NATION:
       case DestSuggestType.SUGGEST_LOC_PROVINCE:
       case DestSuggestType.SUGGEST_LOC_CITY:
-        return SuggestLandmarkWidget(suggest, query: query);
+        return SuggestLandmarkWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_POI_SCENIC:
       case DestSuggestType.SUGGEST_POI_ENT:
       case DestSuggestType.SUGGEST_POI_HOTEL:
       case DestSuggestType.SUGGEST_POI_FOOD:
       case DestSuggestType.SUGGEST_POI_SHOPPING:
       case DestSuggestType.SUGGEST_POI_TRANSPORT:
-        return SuggestPoiWidget(suggest, query: query);
+        return SuggestPoiWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_MORE_NOTE:
       case DestSuggestType.SUGGEST_MORE_SMART:
       case DestSuggestType.SUGGEST_MORE_POI:
       case DestSuggestType.SUGGEST_MORE_EXPERIENCE:
         return SuggestMoreWidget(suggest);
       case DestSuggestType.SUGGEST_NOTE:
-        return SuggestNoteWidget(suggest, query: query);
+        return SuggestNoteWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_SMART:
-        return SuggestSmartWidget(suggest, query: query);
+        return SuggestSmartWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_FLIGHT_TICKET:
       case DestSuggestType.SUGGEST_FLIGHT_SELLS:
-        return SuggestFlightWidget(suggest, query: query);
+        return SuggestFlightWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_HOTEL_LIST:
-        return SuggestPoiTagWidget(suggest, query: query);
+        return SuggestPoiTagWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_HOTEL_BRAND:
-        return SuggestPoiTagWidget(suggest, query: query);
+        return SuggestPoiTagWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_POI_NEAR_SCENIC:
       case DestSuggestType.SUGGEST_POI_NEAR_HOTEL:
       case DestSuggestType.SUGGEST_POI_NEAR_FOOD:
       case DestSuggestType.SUGGEST_POI_NEAR_ENT:
       case DestSuggestType.SUGGEST_POI_NEAR_SHOPPING:
       case DestSuggestType.SUGGEST_POI_NEAR_TRANSPORT:
-        return SuggestPoiAroundWidget(suggest, query: query);
+        return SuggestPoiAroundWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_POI_CREATE:
-        return SuggestPoiCreateWidget(suggest, query: query);
+        return SuggestPoiCreateWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_FEEDBACK:
         return SuggestFeedbackWidget(suggest);
       case DestSuggestType.SUGGEST_CALL_CENTER:
@@ -98,15 +98,15 @@ class DestSearchSuggestWidget extends StatelessWidget {
       case DestSuggestType.SUGGEST_POI_LIST_FOOD:
       case DestSuggestType.SUGGEST_POI_LIST_ENT:
       case DestSuggestType.SUGGEST_POI_LIST_SHOPPING:
-        return SuggestPoiTagWidget(suggest, query: query);
+        return SuggestPoiTagWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_NO_DATA:
         return SuggestNoDataWidget(suggest);
       case DestSuggestType.SUGGEST_EXPERIENCE:
-        return SuggestExperienceWidget(suggest, query: query);
+        return SuggestExperienceWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_DUJIA_PRODUCT:
-        return SuggestDujiaWidget(suggest, query: query);
+        return SuggestDujiaWidget(suggest, query: keyword);
       case DestSuggestType.SUGGEST_WEB_PAGE:
-        return SuggestLinkWidget(suggest, query: query);
+        return SuggestLinkWidget(suggest, query: keyword);
       default:
         return ListTile(
           title: Text((suggest?.name ?? "") + (suggest?.type ?? 0).toString()),
