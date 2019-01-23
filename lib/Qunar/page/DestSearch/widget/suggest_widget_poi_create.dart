@@ -22,8 +22,8 @@ class SuggestPoiCreateWidget extends ASuggestWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: BaseDimens.NORMAL),
-              child: Text.rich(
-                buildSuggestHighlightText(suggest?.name ?? "", src: query),
+              child: Text(
+                suggest?.name ?? "",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: suggestTitleStyle(const BaseTextStyle.blue()),
