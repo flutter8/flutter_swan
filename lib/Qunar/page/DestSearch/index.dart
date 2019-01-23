@@ -52,7 +52,6 @@ class _DestSearchWidgetState extends State<QDestSearchWidget> {
     return BlocEventStateBuilder<DestSearchBlocState>(
       bloc: pageBloc,
       builder: (context, state) {
-        print(pageBloc);
         return Scaffold(
           key: ValueKey("DestSearchWidget-Scaffold"),
           appBar: navigationBar(onSearchTextChanged, focusNode),

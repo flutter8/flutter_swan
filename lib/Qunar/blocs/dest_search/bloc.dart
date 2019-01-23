@@ -9,7 +9,6 @@ class DestSearchBloc extends BlocEventStateBase<DestSearchBlocEvent, DestSearchB
 
   @override
   Stream<DestSearchBlocState> eventHandler(DestSearchBlocEvent event, DestSearchBlocState currentState) async* {
-    print("eventHandler===========${event.event}, ${currentState.recommend}");
     switch (event.event) {
       case EventType.initial:
         currentState

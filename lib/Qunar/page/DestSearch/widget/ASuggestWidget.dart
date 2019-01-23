@@ -28,13 +28,10 @@ abstract class ASuggestWidget extends StatelessWidget {
     } else {
       TextSpan textSpan = TextSpan(children: []);
       text.splitMapJoin(
-        RegExp("[$src]"),
+        RegExp("[$src]", caseSensitive: false),
         onMatch: (match) {
           textSpan.children.add(
-            TextSpan(
-              text: match.group(0),
-              style: highlight,
-            ),
+            TextSpan(text: match.group(0), style: highlight),
           );
         },
         onNonMatch: (nonMatch) {
