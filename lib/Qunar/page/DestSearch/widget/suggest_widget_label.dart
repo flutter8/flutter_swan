@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
-import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_base.dart';
 
-class SuggestLabelWidget extends ASuggestWidget {
+class SuggestLabelWidget extends SuggestWidgetBase {
   SuggestLabelWidget(Suggest suggest) : super(suggest);
 
   @override

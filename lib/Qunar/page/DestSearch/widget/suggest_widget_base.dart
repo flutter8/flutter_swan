@@ -5,14 +5,14 @@ import 'package:flutter_swan/Qunar/base/network/response/search.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/suggest_type.dart';
 import 'package:flutter_swan/Qunar/ImageSet.dart';
 
-abstract class ASuggestWidget extends StatelessWidget {
+abstract class SuggestWidgetBase extends StatelessWidget {
   static const highlight = const TextStyle(color: BaseColors.SUGGEST);
 
   final String query;
 
   final Suggest suggest;
 
-  const ASuggestWidget(this.suggest, {this.query});
+  const SuggestWidgetBase(this.suggest, {this.query});
 
   TextStyle suggestTitleStyle(BaseTextStyle src) {
     return src.superBig;
@@ -153,6 +153,8 @@ abstract class ASuggestWidget extends StatelessWidget {
         return QImageSet().dest_search_ic_suggest_more;
       case DestSuggestSubType.car_ticket:
         return QImageSet().dest_search_ic_suggest_car;
+      case DestSuggestSubType.EXPERIENCE_MORE:
+        return QImageSet().dest_search_ic_suggest_more;
       default:
         return QImageSet().dest_search_ic_suggest_link;
     }
@@ -164,16 +166,12 @@ abstract class ASuggestWidget extends StatelessWidget {
       case DestSuggestType.SUGGEST_DUJIA_PRODUCT:
         return buildSuggestRightArrowWidget();
       case DestSuggestType.SUGGEST_WEB_PAGE:
-        return buildSuggestRightArrowWithSubType(subType);
-      default:
+        switch (subType ?? 0) {
+          case DestSuggestSubType.qa_more:
+          case DestSuggestSubType.EXPERIENCE_MORE:
+            return buildSuggestRightArrowWidget();
+        }
         return Container();
-    }
-  }
-
-  Widget buildSuggestRightArrowWithSubType(int subType) {
-    switch (subType ?? 0) {
-      case DestSuggestSubType.qa_more:
-        return buildSuggestRightArrowWidget();
       default:
         return Container();
     }

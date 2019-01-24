@@ -3,9 +3,9 @@ import 'package:flutter_swan/base/styles/colors.dart';
 import 'package:flutter_swan/base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
-import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_base.dart';
 
-class SuggestSmartWidget extends ASuggestWidget {
+class SuggestSmartWidget extends SuggestWidgetBase {
   SuggestSmartWidget(Suggest suggest, {query}) : super(suggest, query: query);
 
   @override

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swan/base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
-import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_base.dart';
 
-class SuggestPoiCreateWidget extends ASuggestWidget {
+class SuggestPoiCreateWidget extends SuggestWidgetBase {
   SuggestPoiCreateWidget(Suggest suggest, {query}) : super(suggest, query: query);
 
   @override

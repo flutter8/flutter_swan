@@ -158,4 +158,6 @@ mixin DestSuggestSubType {
 
   ///  汽车票
   static const int car_ticket = 12;
+
+  static const int EXPERIENCE_MORE = 14;
 }

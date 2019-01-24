@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swan/base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
-import 'package:flutter_swan/Qunar/page/DestSearch/widget/ASuggestWidget.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_base.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/suggest_type.dart';
 
-class SuggestLinkWidget extends ASuggestWidget {
+class SuggestLinkWidget extends SuggestWidgetBase {
   SuggestLinkWidget(Suggest suggest, {query}) : super(suggest, query: query);
 
   @override
@@ -34,5 +35,15 @@ class SuggestLinkWidget extends ASuggestWidget {
         ],
       ),
     );
+  }
+
+  @override
+  TextStyle suggestTitleStyle(BaseTextStyle src) {
+    switch (suggest?.subType ?? 0) {
+      case DestSuggestSubType.qa_more:
+      case DestSuggestSubType.EXPERIENCE_MORE:
+        return super.suggestTitleStyle(const BaseTextStyle.grey());
+    }
+    return super.suggestTitleStyle(src);
   }
 }
