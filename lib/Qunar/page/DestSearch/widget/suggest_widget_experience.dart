@@ -42,7 +42,7 @@ class SuggestExperienceWidget extends SuggestWidgetBase {
             child: Padding(
               padding: const EdgeInsets.only(top: BaseDimens.NORMAL, left: 28),
               child: Text(
-                suggest.subTitle,
+                suggest?.subTitle?.trim(),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: suggestSubTitleStyle(const BaseTextStyle.grey()),
