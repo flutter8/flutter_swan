@@ -12,6 +12,15 @@ class Backend {
     });
   }
 
+  static Future<SuggestResponse> requestApiSuggestDestList(params, {stringify = true}) async {
+    return Future.sync(() {
+      NetRequestCommander commander = NetRequestCommander.request(null);
+      return commander.post("api/${QAPI_Suggest.destList}", params, stringify: stringify);
+    }).then((response) {
+      return (null == response?.data) ? SuggestResponse.empty() : SuggestResponse.fromJson(response.data["data"]);
+    });
+  }
+
   static Future<SearchProductResponse> requestApiRecommendProduct(params, {stringify = true}) async {
     return Future.sync(() {
       NetRequestCommander commander = NetRequestCommander.request(null);

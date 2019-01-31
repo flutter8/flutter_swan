@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_swan/Qunar/base/network/response/search.dart';
+import 'package:flutter_swan/Qunar/page/DestSearch/list.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/suggest_type.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_call_center.dart';
 import 'package:flutter_swan/Qunar/page/DestSearch/widget/suggest_widget_divider.dart';
@@ -38,7 +39,14 @@ class DestSearchSuggestWidget extends StatelessWidget {
         itemCount: response?.list?.length ?? 0,
         itemBuilder: (BuildContext context, index) {
           Suggest suggest = response?.list?.elementAt(index);
-          return buildSuggetItemAdapterWidget(context, suggest);
+          return InkWell(
+            child: buildSuggetItemAdapterWidget(context, suggest),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return DestSearchListWidget(keyword: keyword);
+              }));
+            },
+          );
         },
         separatorBuilder: (BuildContext context, int index) {
           Suggest suggest = response?.list?.elementAt(index);

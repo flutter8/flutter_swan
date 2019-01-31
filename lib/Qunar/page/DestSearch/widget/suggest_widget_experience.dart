@@ -15,6 +15,7 @@ class SuggestExperienceWidget extends SuggestWidgetBase {
         minHeight: BaseDimens.GIGANTIC,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Row(
             children: <Widget>[
@@ -36,13 +37,16 @@ class SuggestExperienceWidget extends SuggestWidgetBase {
               )
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: BaseDimens.NORMAL, left: 28),
-            child: Text(
-              suggest.subTitle,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: suggestSubTitleStyle(const BaseTextStyle.grey()),
+          Offstage(
+            offstage: suggest?.subTitle?.isEmpty ?? true,
+            child: Padding(
+              padding: const EdgeInsets.only(top: BaseDimens.NORMAL, left: 28),
+              child: Text(
+                suggest.subTitle,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: suggestSubTitleStyle(const BaseTextStyle.grey()),
+              ),
             ),
           ),
         ],

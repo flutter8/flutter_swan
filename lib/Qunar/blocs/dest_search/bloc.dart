@@ -55,6 +55,29 @@ class DestSearchBloc extends BlocEventStateBase<DestSearchBlocEvent, DestSearchB
             ..keyword = event?.suggest
             ..suggest = response;
         }
+        break;
+      case EventType.suggestList:
+        if (event?.suggest?.isNotEmpty ?? false) {
+          SuggestResponse response = await Backend.requestApiSuggestDestList({
+            "query": event?.suggest,
+            "cityId": "299914",
+            "cityName": "北京",
+            "locateName": "北京",
+            "type": 0,
+            "subType": 38,
+            "vid": 80006000,
+            "maxType": 39,
+            "lcid": "299914",
+            "latlng": null,
+            "offset": 0,
+            "limit": 20
+          });
+
+          yield currentState
+            ..inRecommend = false
+            ..keyword = event?.suggest
+            ..suggest = response;
+        }
     }
   }
 }
