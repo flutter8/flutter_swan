@@ -18,9 +18,9 @@ class SuggestResponse extends BaseListResponse<Suggest> {
 
   factory SuggestResponse.empty() => SuggestResponse(0, [], 0, 0);
 
-  factory SuggestResponse.fromJson(Map<String, dynamic> json) => _$SuggestListFromJson(json);
+  factory SuggestResponse.fromJson(Map<String, dynamic> json) => _$SuggestResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SuggestListToJson(this);
+  Map<String, dynamic> toJson() => _$SuggestResponseToJson(this);
 }
 
 @JsonSerializable()
@@ -94,9 +94,9 @@ class SearchProductResponse extends BaseListResponse<SearchProduct> {
     List<SearchProduct> list,
   ) : super(totalCount, list);
 
-  factory SearchProductResponse.fromJson(Map<String, dynamic> json) => _$SearchRecommendProductListFromJson(json);
+  factory SearchProductResponse.fromJson(Map<String, dynamic> json) => _$SearchProductResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SearchRecommendProductListToJson(this);
+  Map<String, dynamic> toJson() => _$SearchProductResponseToJson(this);
 }
 
 @JsonSerializable()
@@ -119,9 +119,9 @@ class SearchProduct {
     this.urlType,
   );
 
-  factory SearchProduct.fromJson(Map<String, dynamic> json) => _$SearchRecommendProductFromJson(json);
+  factory SearchProduct.fromJson(Map<String, dynamic> json) => _$SearchProductFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SearchRecommendProductToJson(this);
+  Map<String, dynamic> toJson() => _$SearchProductToJson(this);
 }
 
 @JsonSerializable()
@@ -133,9 +133,9 @@ class SearchRecommendResponse extends BaseListResponse<SearchRecommend> {
 
   factory SearchRecommendResponse.empty() => SearchRecommendResponse(0, []);
 
-  factory SearchRecommendResponse.fromJson(Map<String, dynamic> json) => _$SearchRecommendHotListFromJson(json);
+  factory SearchRecommendResponse.fromJson(Map<String, dynamic> json) => _$SearchRecommendResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SearchRecommendHotListToJson(this);
+  Map<String, dynamic> toJson() => _$SearchRecommendResponseToJson(this);
 }
 
 @JsonSerializable()
@@ -158,7 +158,7 @@ class SearchRecommend {
     this.tag,
   );
 
-  factory SearchRecommend.fromJson(Map<String, dynamic> json) => _$SearchRecommendHotFromJson(json);
+  factory SearchRecommend.fromJson(Map<String, dynamic> json) => _$SearchRecommendFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SearchRecommendHotToJson(this);
+  Map<String, dynamic> toJson() => _$SearchRecommendToJson(this);
 }

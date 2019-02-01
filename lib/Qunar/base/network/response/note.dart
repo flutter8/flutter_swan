@@ -1,3 +1,4 @@
+import 'package:flutter_swan/Qunar/base/network/response/base.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_swan/Qunar/base/network/response/poi.dart';
 
@@ -29,11 +30,19 @@ class Note {
 class Overview {
   final int id;
 
-  final int userId;
+  final String title;
+
+  final String userId;
+
+  final String userName;
+
+  final String nickName;
+
+  final String userHeadImg;
 
   final String labelName;
 
-  final String title;
+  final int routeDays;
 
   final String memo;
 
@@ -41,18 +50,49 @@ class Overview {
 
   final int startTime;
 
+  final int eliteType;
+
   final int score;
 
   final int cityId;
+
+  final String headImg;
 
   final String headImage;
 
   final int sourceType;
 
+  final int actorType;
+
+  final String tripTypeNew;
+
+  final String actorAndTripType;
+
   final List<NoteDay> travelBookDayList;
 
-  Overview(this.id, this.userId, this.labelName, this.title, this.memo, this.cityName, this.startTime, this.score,
-      this.cityId, this.headImage, this.sourceType, this.travelBookDayList);
+  Overview(
+    this.id,
+    this.title,
+    this.userId,
+    this.userName,
+    this.nickName,
+    this.userHeadImg,
+    this.labelName,
+    this.routeDays,
+    this.memo,
+    this.cityName,
+    this.startTime,
+    this.eliteType,
+    this.score,
+    this.cityId,
+    this.headImg,
+    this.headImage,
+    this.sourceType,
+    this.actorType,
+    this.tripTypeNew,
+    this.actorAndTripType,
+    this.travelBookDayList,
+  );
 
   factory Overview.fromJson(Map<String, dynamic> json) => _$OverviewFromJson(json);
 
@@ -71,7 +111,13 @@ class Extension {
 
   final String commonDistName;
 
-  Extension(this.cityHotelSeq, this.routeDistCount, this.imageColor, this.smartTypes, this.commonDistName);
+  Extension(
+    this.cityHotelSeq,
+    this.routeDistCount,
+    this.imageColor,
+    this.smartTypes,
+    this.commonDistName,
+  );
 
   factory Extension.fromJson(Map<String, dynamic> json) => _$ExtensionFromJson(json);
 
@@ -90,7 +136,13 @@ class NoteDay {
 
   final int dayStyle;
 
-  NoteDay(this.id, this.elementList, this.title, this.memo, this.dayStyle);
+  NoteDay(
+    this.id,
+    this.elementList,
+    this.title,
+    this.memo,
+    this.dayStyle,
+  );
 
   factory NoteDay.fromJson(Map<String, dynamic> json) => _$NoteDayFromJson(json);
 
@@ -149,4 +201,21 @@ class NoteElementMemo {
   factory NoteElementMemo.fromJson(Map<String, dynamic> json) => _$NoteElementMemoFromJson(json);
 
   Map<String, dynamic> toJson() => _$NoteElementMemoToJson(this);
+}
+
+@JsonSerializable()
+class OverviewResponse extends BaseListResponse<Overview> {
+  final bool more;
+
+  final int count;
+
+  OverviewResponse(
+    this.more,
+    this.count,
+    List<Overview> list,
+  ) : super(0, list);
+
+  factory OverviewResponse.fromJson(Map<String, dynamic> json) => _$OverviewResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OverviewResponseToJson(this);
 }

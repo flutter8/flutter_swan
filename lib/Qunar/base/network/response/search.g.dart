@@ -6,7 +6,7 @@ part of 'search.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SuggestResponse _$SuggestListFromJson(Map<String, dynamic> json) {
+SuggestResponse _$SuggestResponseFromJson(Map<String, dynamic> json) {
   return SuggestResponse(
       json['totalCount'] as int,
       (json['list'] as List)
@@ -17,7 +17,7 @@ SuggestResponse _$SuggestListFromJson(Map<String, dynamic> json) {
       json['hotOffset'] as int);
 }
 
-Map<String, dynamic> _$SuggestListToJson(SuggestResponse instance) =>
+Map<String, dynamic> _$SuggestResponseToJson(SuggestResponse instance) =>
     <String, dynamic>{
       'totalCount': instance.totalCount,
       'list': instance.list,
@@ -71,7 +71,7 @@ Map<String, dynamic> _$SuggestToJson(Suggest instance) => <String, dynamic>{
       'extra': instance.extra
     };
 
-SearchProductResponse _$SearchRecommendProductListFromJson(
+SearchProductResponse _$SearchProductResponseFromJson(
     Map<String, dynamic> json) {
   return SearchProductResponse(
       json['totalCount'] as int,
@@ -82,18 +82,16 @@ SearchProductResponse _$SearchRecommendProductListFromJson(
           ?.toList());
 }
 
-Map<String, dynamic> _$SearchRecommendProductListToJson(
+Map<String, dynamic> _$SearchProductResponseToJson(
         SearchProductResponse instance) =>
     <String, dynamic>{'totalCount': instance.totalCount, 'list': instance.list};
 
-SearchProduct _$SearchRecommendProductFromJson(
-    Map<String, dynamic> json) {
+SearchProduct _$SearchProductFromJson(Map<String, dynamic> json) {
   return SearchProduct(json['type'] as String, json['name'] as String,
       json['price'] as String, json['url'] as String, json['urlType'] as int);
 }
 
-Map<String, dynamic> _$SearchRecommendProductToJson(
-        SearchProduct instance) =>
+Map<String, dynamic> _$SearchProductToJson(SearchProduct instance) =>
     <String, dynamic>{
       'type': instance.type,
       'name': instance.name,
@@ -102,7 +100,7 @@ Map<String, dynamic> _$SearchRecommendProductToJson(
       'urlType': instance.urlType
     };
 
-SearchRecommendResponse _$SearchRecommendHotListFromJson(
+SearchRecommendResponse _$SearchRecommendResponseFromJson(
     Map<String, dynamic> json) {
   return SearchRecommendResponse(
       json['totalCount'] as int,
@@ -113,16 +111,16 @@ SearchRecommendResponse _$SearchRecommendHotListFromJson(
           ?.toList());
 }
 
-Map<String, dynamic> _$SearchRecommendHotListToJson(
+Map<String, dynamic> _$SearchRecommendResponseToJson(
         SearchRecommendResponse instance) =>
     <String, dynamic>{'totalCount': instance.totalCount, 'list': instance.list};
 
-SearchRecommend _$SearchRecommendHotFromJson(Map<String, dynamic> json) {
+SearchRecommend _$SearchRecommendFromJson(Map<String, dynamic> json) {
   return SearchRecommend(json['id'] as int, json['name'] as String,
       json['type'] as int, json['poiType'] as int, json['tag']);
 }
 
-Map<String, dynamic> _$SearchRecommendHotToJson(SearchRecommend instance) =>
+Map<String, dynamic> _$SearchRecommendToJson(SearchRecommend instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

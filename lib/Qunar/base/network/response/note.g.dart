@@ -22,16 +22,25 @@ Map<String, dynamic> _$NoteToJson(Note instance) =>
 Overview _$OverviewFromJson(Map<String, dynamic> json) {
   return Overview(
       json['id'] as int,
-      json['userId'] as int,
-      json['labelName'] as String,
       json['title'] as String,
+      json['userId'] as String,
+      json['userName'] as String,
+      json['nickName'] as String,
+      json['userHeadImg'] as String,
+      json['labelName'] as String,
+      json['routeDays'] as int,
       json['memo'] as String,
       json['cityName'] as String,
       json['startTime'] as int,
+      json['eliteType'] as int,
       json['score'] as int,
       json['cityId'] as int,
+      json['headImg'] as String,
       json['headImage'] as String,
       json['sourceType'] as int,
+      json['actorType'] as int,
+      json['tripTypeNew'] as String,
+      json['actorAndTripType'] as String,
       (json['travelBookDayList'] as List)
           ?.map((e) =>
               e == null ? null : NoteDay.fromJson(e as Map<String, dynamic>))
@@ -40,16 +49,24 @@ Overview _$OverviewFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$OverviewToJson(Overview instance) => <String, dynamic>{
       'id': instance.id,
-      'userId': instance.userId,
-      'labelName': instance.labelName,
       'title': instance.title,
+      'userId': instance.userId,
+      'userName': instance.userName,
+      'nickName': instance.nickName,
+      'userHeadImg': instance.userHeadImg,
+      'labelName': instance.labelName,
+      'routeDays': instance.routeDays,
       'memo': instance.memo,
       'cityName': instance.cityName,
       'startTime': instance.startTime,
+      'eliteType': instance.eliteType,
       'score': instance.score,
       'cityId': instance.cityId,
       'headImage': instance.headImage,
       'sourceType': instance.sourceType,
+      'actorType': instance.actorType,
+      'tripTypeNew': instance.tripTypeNew,
+      'actorAndTripType': instance.actorAndTripType,
       'travelBookDayList': instance.travelBookDayList
     };
 
@@ -134,4 +151,21 @@ Map<String, dynamic> _$NoteElementMemoToJson(NoteElementMemo instance) =>
       'type': instance.type,
       'content': instance.content,
       'image': instance.image
+    };
+
+OverviewResponse _$OverviewResponseFromJson(Map<String, dynamic> json) {
+  return OverviewResponse(
+      json['more'] as bool,
+      json['count'] as int,
+      (json['list'] as List)
+          ?.map((e) =>
+              e == null ? null : Overview.fromJson(e as Map<String, dynamic>))
+          ?.toList());
+}
+
+Map<String, dynamic> _$OverviewResponseToJson(OverviewResponse instance) =>
+    <String, dynamic>{
+      'list': instance.list,
+      'more': instance.more,
+      'count': instance.count
     };

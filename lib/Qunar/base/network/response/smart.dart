@@ -57,33 +57,34 @@ class NoteSmartData {
 
   final int collectCount;
 
-  NoteSmartData(
-      {this.id,
-      this.title,
-      this.cTime,
-      this.cityName,
-      this.destCities,
-      this.imageUrl,
-      this.labelName,
-      this.routeDays,
-      this.startTime,
-      this.uTime,
-      this.userName,
-      this.viewCount,
-      this.ownerId,
-      this.ugcInfo,
-      this.isSticky,
-      this.isElite,
-      this.bookType,
-      this.userImageUrl,
-      this.eliteType,
-      this.likeCount,
-      this.itemOrder,
-      this.userSmart,
-      this.imageColor,
-      this.commonDistName,
-      this.tip,
-      this.collectCount});
+  NoteSmartData({
+    this.id,
+    this.title,
+    this.cTime,
+    this.cityName,
+    this.destCities,
+    this.imageUrl,
+    this.labelName,
+    this.routeDays,
+    this.startTime,
+    this.uTime,
+    this.userName,
+    this.viewCount,
+    this.ownerId,
+    this.ugcInfo,
+    this.isSticky,
+    this.isElite,
+    this.bookType,
+    this.userImageUrl,
+    this.eliteType,
+    this.likeCount,
+    this.itemOrder,
+    this.userSmart,
+    this.imageColor,
+    this.commonDistName,
+    this.tip,
+    this.collectCount,
+  });
 
   factory NoteSmartData.fromJson(Map<String, dynamic> json) => _$NoteSmartDataFromJson(json);
 
@@ -109,7 +110,8 @@ class NoteSmartListData extends BaseListResponse<NoteSmartData> {
 }
 
 @JsonSerializable()
-class NoteSmartTagData { // with BaseListResponse<NoteSmartTag> {
+class NoteSmartTagData {
+  // with BaseListResponse<NoteSmartTag> {
   // NoteSmartTagData();
 
   // set list(List list) {

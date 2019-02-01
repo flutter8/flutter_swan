@@ -30,9 +30,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider(
       store: store,
-      child: MaterialApp(
+      child: CupertinoApp(
         title: 'Flutter Demo',
         home: QunarHomeIndex(),
+        theme: CupertinoThemeData(
+          
+        ),
       ),
     );
   }

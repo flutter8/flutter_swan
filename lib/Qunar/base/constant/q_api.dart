@@ -19,5 +19,12 @@ mixin QAPI_Suggest {
 mixin QAPI_City {
   static const String PATH = "proxy/city";
 
+  static const String CITY = "city";
+
   static const String locate = "$PATH/locate";
+}
+
+mixin QAPI_Book {
+
+  static const String SEARCH = "book/search";
 }
