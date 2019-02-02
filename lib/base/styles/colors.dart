@@ -12,4 +12,8 @@ mixin BaseColors {
   static const Color PRICE = Color(0xFFFF643F);
 
   static const Color SUGGEST = Color(0xFFFF9201);
+
+  static const Color green = Color(0xFF01C594);
+
+  static const Color greenAccent = Color(0xFFEEFFFB);
 }

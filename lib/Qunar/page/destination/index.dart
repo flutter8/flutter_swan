@@ -4,10 +4,12 @@ import 'package:flutter_swan/Qunar/base/widget/widget_go_back.dart';
 import 'package:flutter_swan/Qunar/blocs/destination/bloc.dart';
 import 'package:flutter_swan/Qunar/blocs/destination/event.dart';
 import 'package:flutter_swan/Qunar/blocs/destination/state.dart';
+import 'package:flutter_swan/Qunar/page/destination/widget/component_header_widget.dart';
 import 'package:flutter_swan/Qunar/page/destination/widget/note_cell_widget.dart';
 import 'package:flutter_swan/base/bloc/widget/bloc_state_builder.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_swan/base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/base/styles/colors.dart';
 
@@ -29,27 +31,7 @@ class _DestinationWidgetState extends State<DestinationWidget> {
     return CupertinoPageScaffold(
       child: Stack(
         children: <Widget>[
-          CustomScrollView(
-            slivers: <Widget>[
-              SliverToBoxAdapter(
-                child: buildCityInfoWidet(context),
-              ),
-              BlocEventStateBuilder<DestinationBlocState>(
-                bloc: pageBloc,
-                builder: (BuildContext context, DestinationBlocState state) {
-                  return SliverList(
-                    delegate: SliverChildBuilderDelegate((context, index) {
-                      return Container(
-                        child: NoteCellWidget(
-                          overview: state?.overviewResponse?.list?.elementAt(index),
-                        ),
-                      );
-                    }, childCount: state?.overviewResponse?.list?.length ?? 0),
-                  );
-                },
-              ),
-            ],
-          ),
+          buildContent(context),
           CupertinoNavigationBar(
             leading: QBaseGoBackWidget(),
             backgroundColor: Colors.white.withOpacity(0),
@@ -93,16 +75,28 @@ class _DestinationWidgetState extends State<DestinationWidget> {
     );
   }
 
-  Widget buildCityInfoWidet(BuildContext context) {
+  Widget buildContent(BuildContext context) {
     return BlocEventStateBuilder<DestinationBlocState>(
       bloc: pageBloc,
       builder: (BuildContext context, DestinationBlocState state) {
-        return Container(
-          child: Image(
-            image: CachedNetworkImageProvider(state?.city?.headImage ?? ""),
-            height: 320,
-            fit: BoxFit.cover,
-          ),
+        return CustomScrollView(
+          slivers: <Widget>[
+            SliverToBoxAdapter(
+              child: ComponentHeaderWidget(
+                dest: state?.city,
+                channel: state?.channelResponse,
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate((context, index) {
+                return Container(
+                  child: NoteCellWidget(
+                    overview: state?.overviewResponse?.list?.elementAt(index),
+                  ),
+                );
+              }, childCount: state?.overviewResponse?.list?.length ?? 0),
+            )
+          ],
         );
       },
     );

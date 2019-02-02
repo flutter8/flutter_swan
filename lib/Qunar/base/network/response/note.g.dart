@@ -62,6 +62,7 @@ Map<String, dynamic> _$OverviewToJson(Overview instance) => <String, dynamic>{
       'eliteType': instance.eliteType,
       'score': instance.score,
       'cityId': instance.cityId,
+      'headImg': instance.headImg,
       'headImage': instance.headImage,
       'sourceType': instance.sourceType,
       'actorType': instance.actorType,

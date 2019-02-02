@@ -40,3 +40,34 @@ Map<String, dynamic> _$CityToJson(City instance) => <String, dynamic>{
       'visaType': instance.visaType,
       'visaTypeName': instance.visaTypeName
     };
+
+ChannelResponse _$ChannelResponseFromJson(Map<String, dynamic> json) {
+  return ChannelResponse((json['list'] as List)
+      ?.map(
+          (e) => e == null ? null : Channel.fromJson(e as Map<String, dynamic>))
+      ?.toList());
+}
+
+Map<String, dynamic> _$ChannelResponseToJson(ChannelResponse instance) =>
+    <String, dynamic>{'list': instance.list};
+
+Channel _$ChannelFromJson(Map<String, dynamic> json) {
+  return Channel(
+      json['jumpType'] as String,
+      json['title'] as String,
+      json['jumpUrl'] as String,
+      json['iconUrl'] as String,
+      json['beacon'] as String,
+      json['andrVersion'] as String,
+      json['iosVersion'] as String);
+}
+
+Map<String, dynamic> _$ChannelToJson(Channel instance) => <String, dynamic>{
+      'jumpType': instance.jumpType,
+      'title': instance.title,
+      'jumpUrl': instance.jumpUrl,
+      'iconUrl': instance.iconUrl,
+      'beacon': instance.beacon,
+      'andrVersion': instance.andrVersion,
+      'iosVersion': instance.iosVersion
+    };

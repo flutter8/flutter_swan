@@ -13,6 +13,15 @@ class Backend {
     });
   }
 
+  static Future<ChannelResponse> requestApiChannelList(params, {stringify = true}) async {
+    return Future.sync(() {
+      NetRequestCommander commander = NetRequestCommander.request(null);
+      return commander.post("api/${QAPI_Channel.list}", params, stringify: stringify);
+    }).then((response) {
+      return (null == response?.data) ? null : ChannelResponse.fromJson(response.data["data"]);
+    });
+  }
+
   static Future<OverviewResponse> requestApiBooSearch(params, {stringify = true}) async {
     return Future.sync(() {
       NetRequestCommander commander = NetRequestCommander.request(null);

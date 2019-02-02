@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_swan/base/styles/colors.dart';
 import 'package:flutter_swan/base/styles/dimens.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/base/network/response/note.dart';
@@ -30,7 +31,7 @@ class NoteCellWidget extends StatelessWidget {
               flex: 3,
               child: Container(
                 padding: const EdgeInsets.only(right: BaseDimens.NORMAL),
-                height: 100,
+                height: 105,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -46,14 +47,18 @@ class NoteCellWidget extends StatelessWidget {
                         children: <Widget>[
                           Container(
                             margin: const EdgeInsets.only(right: BaseDimens.NORMAL),
-                            padding: const EdgeInsets.symmetric(horizontal: BaseDimens.TINY),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: BaseDimens.SMALL,
+                              vertical: BaseDimens.TINY,
+                            ),
                             decoration: BoxDecoration(
+                              color: BaseColors.greenAccent,
                               borderRadius: BorderRadius.all(Radius.circular(2)),
-                              border: Border.all(color: Color(0xFF0C9D7F)),
+                              border: Border.all(color: BaseColors.green),
                             ),
                             child: Text(
-                              overview?.userName,
-                              style: const BaseTextStyle.black().small,
+                              "${overview?.routeDays}日游",
+                              style: const BaseTextStyle.green().small,
                             ),
                           ),
                         ],
@@ -110,23 +115,23 @@ class NoteCellWidget extends StatelessWidget {
                           fit: BoxFit.cover,
                           imageUrl: overview?.headImg ?? "",
                           // width: 200,
-                          height: 100,
+                          height: 105,
                         ),
                       ),
                     ),
                   ),
                   Positioned(
                     right: 0,
-                    top: BaseDimens.SMALL,
+                    top: BaseDimens.NORMAL,
                     child: Opacity(
                       opacity: (overview?.eliteType ?? 0) == 0 ? 0 : 1,
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: BaseDimens.SMALL, vertical: BaseDimens.TINY),
                         decoration: BoxDecoration(
-                          color: Colors.greenAccent,
+                          color: BaseColors.green,
                           borderRadius: BorderRadius.all(Radius.circular(BaseDimens.TINY)),
                         ),
-                        child: Text("精华", style: BaseTextStyle.white().small),
+                        child: Text("精华", style: BaseTextStyle.white().normal),
                       ),
                     ),
                   )

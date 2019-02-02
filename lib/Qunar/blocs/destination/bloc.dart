@@ -24,6 +24,13 @@ class DestinationBloc extends BlocEventStateBase<DestinationBlocEvent, Destinati
 
         yield currentState..overviewResponse = response;
 
+        var channelResponse = await Backend.requestApiChannelList({
+          "distId":
+              "299878&distName=上海&residentId=299914&locateId=299914&locateName=北京&cityUrl=shanghai_city&isAbroad=0&bdSource=&bd_source=&from_page=&destType=6",
+        });
+
+        yield currentState..channelResponse = channelResponse;
+
         break;
     }
   }

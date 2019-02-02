@@ -24,6 +24,11 @@ mixin QAPI_City {
   static const String locate = "$PATH/locate";
 }
 
+mixin QAPI_Channel {
+
+  static const String list = "channel/list";
+}
+
 mixin QAPI_Book {
 
   static const String SEARCH = "book/search";

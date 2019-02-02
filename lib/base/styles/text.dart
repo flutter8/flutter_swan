@@ -38,6 +38,8 @@ class BaseTextStyle {
 
   const BaseTextStyle.suggest() : this._(BaseColors.SUGGEST);
 
+  const BaseTextStyle.green() : this._(BaseColors.green);
+
   TextStyle get tiny => TextStyle(fontSize: BaseTextFontSize.TINY, color: color);
 
   TextStyle get small => TextStyle(fontSize: BaseTextFontSize.SMALL, color: color);

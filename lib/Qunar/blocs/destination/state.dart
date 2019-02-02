@@ -9,6 +9,8 @@ class DestinationBlocState extends BlocState {
 
   City city;
 
+  ChannelResponse channelResponse;
+
   OverviewResponse overviewResponse;
 
   DestinationBlocState()
