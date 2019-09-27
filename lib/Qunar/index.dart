@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_swan/base/redux/actions.dart';
-import 'package:flutter_swan/base/redux/state.dart';
 import 'package:flutter_swan/base/styles/colors.dart';
 import 'package:flutter_swan/base/styles/text.dart';
 import 'package:flutter_swan/Qunar/page/destination/index.dart';
-import 'package:flutter_swan/Qunar/page/DestSearch/index.dart';
 import 'package:flutter_swan/Qunar/page/discovery/index.dart';
 import 'package:flutter_swan/Qunar/page/user_center/index.dart';
-import 'package:amap_location/amap_location.dart';
 
 class QunarHomeIndex extends StatefulWidget {
   _QunarHomeIndexState createState() => _QunarHomeIndexState();
@@ -62,9 +57,7 @@ class _QunarHomeIndexState extends State<QunarHomeIndex> {
           child: CupertinoTabView(builder: (context) {
             switch (index) {
               case 0:
-                return CupertinoPageScaffold(
-                  child: DestinationWidget(),
-                );
+                return DestinationWidget();
               case 1:
                 return DiscoveryWidget();
               case 2:
@@ -77,7 +70,7 @@ class _QunarHomeIndexState extends State<QunarHomeIndex> {
   }
 
   void getLocation(context) async {
-    AMapLocation loc = await AMapLocationClient.getLocation(true);
-    StoreProvider.of<BaseReduxState>(context).dispatch(BaseUpdateLocateAction(loc));
+    // AMapLocation loc = await AMapLocationClient.getLocation(true);
+    // StoreProvider.of<BaseReduxState>(context).dispatch(BaseUpdateLocateAction(loc));
   }
 }

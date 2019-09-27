@@ -21,27 +21,29 @@ Map<String, dynamic> _$NoteToJson(Note instance) =>
 
 Overview _$OverviewFromJson(Map<String, dynamic> json) {
   return Overview(
-      json['id'] as int,
-      json['title'] as String,
-      json['userId'] as String,
-      json['userName'] as String,
-      json['nickName'] as String,
-      json['userHeadImg'] as String,
-      json['labelName'] as String,
-      json['routeDays'] as int,
-      json['memo'] as String,
-      json['cityName'] as String,
-      json['startTime'] as int,
-      json['eliteType'] as int,
-      json['score'] as int,
-      json['cityId'] as int,
-      json['headImg'] as String,
-      json['headImage'] as String,
-      json['sourceType'] as int,
-      json['actorType'] as int,
-      json['tripTypeNew'] as String,
-      json['actorAndTripType'] as String,
-      (json['travelBookDayList'] as List)
+      id: json['id'] as int,
+      title: json['title'] as String,
+      userId: json['userId'] as String,
+      userName: json['userName'] as String,
+      nickName: json['nickName'] as String,
+      userHeadImg: json['userHeadImg'] as String,
+      labelName: json['labelName'] as String,
+      routeDays: json['routeDays'] as int,
+      memo: json['memo'] as String,
+      cityName: json['cityName'] as String,
+      startTime: json['startTime'] as int,
+      eliteType: json['eliteType'] as int,
+      score: json['score'] as int,
+      cityId: json['cityId'] as int,
+      headImg: json['headImg'] as String,
+      headImage: json['headImage'] as String,
+      sourceType: json['sourceType'] as int,
+      actorType: json['actorType'] as int,
+      tripTypeNew: json['tripTypeNew'] as String,
+      actorAndTripType: json['actorAndTripType'] as String,
+      imageUrl: json['imageUrl'] as String,
+      imageColor: json['imageColor'] as String,
+      travelBookDayList: (json['travelBookDayList'] as List)
           ?.map((e) =>
               e == null ? null : NoteDay.fromJson(e as Map<String, dynamic>))
           ?.toList());
@@ -68,6 +70,8 @@ Map<String, dynamic> _$OverviewToJson(Overview instance) => <String, dynamic>{
       'actorType': instance.actorType,
       'tripTypeNew': instance.tripTypeNew,
       'actorAndTripType': instance.actorAndTripType,
+      'imageUrl': instance.imageUrl,
+      'imageColor': instance.imageColor,
       'travelBookDayList': instance.travelBookDayList
     };
 

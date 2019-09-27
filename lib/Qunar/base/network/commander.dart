@@ -22,13 +22,7 @@ class NetRequestCommander {
   }
 
   NetRequestCommander._() {
-    _dio = Dio(
-      Options(baseUrl: QServer.release),
-    )
-      // ..transformer = BaseTransformer()
-      ..interceptor.request.onSend = (Options options) {
-        return options;
-      };
+    _dio = Dio(BaseOptions(baseUrl: QServer.release));
   }
 
   Dio get dio => _dio;
@@ -39,6 +33,15 @@ class NetRequestCommander {
       return dio.post<T>("$path?${NetRequestCommander.stringify(data)}");
     } else {
       return dio.post<T>(path, data: data);
+    }
+  }
+
+  Future<Response<T>> get<T>(String path, dynamic data, {bool stringify}) {
+    print("$path?${NetRequestCommander.stringify(data)}");
+    if (stringify) {
+      return dio.get<T>("$path?${NetRequestCommander.stringify(data)}");
+    } else {
+      return dio.get<T>(path, queryParameters: data);
     }
   }
 
@@ -55,11 +58,13 @@ class NetRequestCommander {
   }
 
   static String stringify(Map<dynamic, dynamic> data) {
-      StringBuffer stringify = StringBuffer();
-      data?.forEach((key, value) {
+    StringBuffer stringify = StringBuffer();
+    data?.forEach((key, value) {
+      if (null != value) {
         stringify..write("&")..write(key)..write("=")..write(value);
-      });
-      return stringify.toString().substring(1);
+      }
+    });
+    return stringify.toString().substring(1);
   }
 }
 

@@ -68,9 +68,13 @@ class Overview {
 
   final String actorAndTripType;
 
+  final String imageUrl;
+
+  final String imageColor;
+
   final List<NoteDay> travelBookDayList;
 
-  Overview(
+  Overview({
     this.id,
     this.title,
     this.userId,
@@ -91,8 +95,10 @@ class Overview {
     this.actorType,
     this.tripTypeNew,
     this.actorAndTripType,
+    this.imageUrl,
+    this.imageColor,
     this.travelBookDayList,
-  );
+  });
 
   factory Overview.fromJson(Map<String, dynamic> json) => _$OverviewFromJson(json);
 
@@ -162,12 +168,12 @@ class NoteElement extends Poi {
     List<PoiImage> images,
     this.memoList,
   ) : super(
-          id,
-          type,
-          originType,
-          name,
-          memo,
-          images,
+          id: id,
+          type: type,
+          originType: originType,
+          name: name,
+          memo: memo,
+          images: images,
         );
 
   List<PoiImage> imageInMemoList() {

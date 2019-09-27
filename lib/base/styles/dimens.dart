@@ -6,6 +6,8 @@ class BaseDimens {
 
   static const double NORMAL = 8;
 
+  static const double BIG_NORMAL = 12;
+
   static const double BIG = 16;
 
   static const double SUPER_BIG = 24;

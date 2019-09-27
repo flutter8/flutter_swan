@@ -76,9 +76,9 @@ class _ComponentHeaderWidgetState extends State<ComponentHeaderWidget> {
                             Padding(
                               padding: const EdgeInsets.only(right: BaseDimens.SMALL),
                               child: Icon(
-                                IconData(0xf3a7, fontFamily: "Qunar"),
+                                IconData(0xE3BB, fontFamily: "gl_home_rn"),
                                 color: Colors.white,
-                                size: 16,
+                                size: BaseTextFontSize.HUGE,
                               ),
                             ),
                             Text(
@@ -95,7 +95,7 @@ class _ComponentHeaderWidgetState extends State<ComponentHeaderWidget> {
                   child: Row(
                     children: <Widget>[
                       Text(
-                        widget?.dest?.name,
+                        widget?.dest?.name ?? "",
                         style: TextStyle(fontWeight: FontWeight.bold).merge(BaseTextStyle.white().gigantic),
                       ),
                       Padding(
@@ -122,21 +122,38 @@ class _ComponentHeaderWidgetState extends State<ComponentHeaderWidget> {
       color: Colors.white,
       margin: const EdgeInsets.only(bottom: BaseDimens.NORMAL),
       child: Container(
-        height: 152,
-        // child: SliverGrid.count(
-        //   crossAxisCount: 5,
-        //   mainAxisSpacing: 8,
-        //   crossAxisSpacing: 8,
-        //   children: List.generate(widget?.channel?.length, (index) {
-        //     return Container(
-        //       color: Colors.redAccent,
-        //       child: Image.network(
-        //         widget?.channel[index]?.iconUrl,
-        //         fit: BoxFit.cover,
-        //       ),
-        //     );
-        //   }),
-        // ),
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(BaseDimens.BIG),
+        width: double.infinity,
+        child: Wrap(
+          spacing: BaseDimens.BIG,
+          runSpacing: BaseDimens.BIG,
+          children: List.generate(widget?.channel?.length ?? 0, (index) {
+            Channel channel = widget?.channel[index];
+            return Container(
+              child: Column(
+                children: <Widget>[
+                  CachedNetworkImage(
+                    width: 48,
+                    height: 48,
+                    imageUrl: channel?.iconUrl ?? "",
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: BaseDimens.SMALL),
+                    child: Text(
+                      channel?.title ?? "",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ).merge(
+                        BaseTextStyle.black().normal,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          }),
+        ),
       ),
     );
   }
